@@ -1,7 +1,11 @@
 import { useState } from "react"
 import useInterval from "../../utils/useInterval"
+import Image from "next/image"
+import img1 from "../../public/info4.png"
+import img2 from "../../public/info5.png"
 
 const Info4 = () => {
+  const [id, setId] = useState(undefined)
   const [menu, setMenu] = useState("")
   const [text, setText] = useState("")
   const [compo, setCompo] = useState([""])
@@ -9,16 +13,16 @@ const Info4 = () => {
   const [count, setCount] = useState(0)
 
   // 받아올 데이터
-  const arr = [
-    {
-      menu: "국내 건강체력 기준",
-      text: "국내 건강 체력기준은 현재 @@@@ 이며 다음과 같습니다.",
-      compo: [],
-    },
-    { menu: "경찰 공무원", text: "경찰 공무원 필수 자격은 @@@@ 이며 다음과 같습니다.", compo: ["1", "2", "3"] },
-    { menu: "소방 공무원", text: "소방 공무원 필수 자격은 @@@@ 이며 다음과 같습니다.", compo: [] },
-    { menu: "테스트", text: "overflow test / ".repeat(200), compo: [] },
+  const list = [
+    { id: 0, menu: "평가 기준", text: "국내 남녀 각 운동의 건강 체력기준은 다음과 같습니다.", compo: [] },
+    { id: 1, menu: "소방 공무원", text: "소방 공무원 시험 기준은 다음과 같습니다.", compo: [] },
+    { id: 2, menu: "경찰 공무원", text: "경찰 공무원 필수 자격은 다음과 같습니다.", compo: ["내용1", "내용2", "내용3"] },
+    { id: 3, menu: "테스트", text: "overflow test / ".repeat(200), compo: [] },
+    { id: 4, menu: "테스트", text: "overflow test / ".repeat(200), compo: [] },
+    { id: 5, menu: "테스트", text: "overflow test / ".repeat(200), compo: [] },
   ]
+
+  setdata변수
 
   // 타이핑 효과
   useInterval(() => {
@@ -33,24 +37,28 @@ const Info4 = () => {
 
       return result
     })
-  }, 1)
+  }, 15)
 
   const onClickHandler = (v) => {
     setLandingTitle("")
     setCount(0)
-    setText(v.text)
+    setId(v.id)
     setMenu(v.menu)
+    setText(v.text)
     setCompo(v.compo)
+
+    console.log(v)
+    console.log(v.compo)
   }
 
   return (
-    <div className='flex w-[60%] h-[80%] text-black drop-shadow'>
+    <div className='flex w-[70%] h-[80%] text-black drop-shadow'>
       {/*좌측*/}
       <ul className='tabs flex flex-col w-[50vh] h-full items-center justify-between bg-white rounded-l-lg text-white text-lg font-bold'>
-        {arr.map((v, idx) => {
+        {list.map((v, idx) => {
           return (
             <li
-              className='flex w-[90%] h-full items-center justify-center bg-button my-5 rounded-lg cursor-pointer hover:bg-hover active:bg-button focus:ring focus:ring-4 focus:ring-gray-500 '
+              className='flex w-[90%] h-full items-center justify-center bg-button my-5 rounded-lg cursor-pointer hover:bg-hover active:bg-button'
               key={idx}
               onClick={() => {
                 onClickHandler(v)
@@ -62,10 +70,11 @@ const Info4 = () => {
         })}
       </ul>
       {/* 우측 */}
-      <div className='flex flex-col w-full h-full p-10 bg-gray-300 rounded-r-lg text-xl font-bold overflow-auto'>
-        {menu ? <div className='flex w-[15vw] h-[3vw] items-center justify-center rounded-lg drop-shadow text-3xl bg-white mb-10'>{menu}</div> : <div className='flex items-center justify-center'>메뉴를 눌러 확인해 보세요.</div>}
+      <div className='relative w-full h-full p-10 bg-gray-300 rounded-r-lg text-xl font-bold overflow-auto'>
+        {menu ? <div className='flex w-[15vw] h-[3vw] items-center justify-center rounded-lg drop-shadow text-3xl  bg-white mb-10'>{menu}</div> : <div className='flex items-center justify-center'>메뉴를 눌러 확인해 보세요.</div>}
         <div className='mb-10'>{landingTitle}</div>
-
+        {id == 0 ? <Image src={img1} alt='info4' /> : id == 1 ? <Image src={img2} alt='info5' /> : <></>}
+        {/* 추가 기능  */}
         {compo.map((v, idx) => {
           return (
             <div key={idx} className='my-2'>

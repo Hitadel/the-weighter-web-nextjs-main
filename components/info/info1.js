@@ -3,7 +3,7 @@ import img from "../../public/info1.png"
 
 const Info1 = () => {
   return (
-    <div className='flex justify-center items-center rounded-2xl shadow-shadow mr-[5%] m-4'>
+    <div className='flex justify-center items-center rounded-2xl shadow-shadow mr-[5%] m-4 dark:text-black'>
       <div className='flex w-[12vw] h-[12vw] rounded-l-lg'>
         <Image src={img} className='w-full' alt='info1' />
       </div>

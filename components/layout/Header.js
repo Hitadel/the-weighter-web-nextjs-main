@@ -18,17 +18,17 @@ const Header = () => {
         </Link>
         <div className='flex justify-center items-center mr-7 text-black'>
           <Link href='/info'>
-            <button className='flex w-36 h-[4vh] justify-center items-center border-b-2 border-menuitem mr-7 text-base font-semibold'>서비스 소개</button>
+            <button className='flex w-36 h-[4vh] justify-center items-center border-b-2 border-menuitem mr-7 text-base font-semibold active:bg-gray-200'>서비스 소개</button>
           </Link>
           <Link href='/information'>
-            <button className='flex w-36 h-[4vh] justify-center items-center border-b-2 border-menuitem mr-7 text-base font-semibold'>기준표</button>
+            <button className='flex w-36 h-[4vh] justify-center items-center border-b-2 border-menuitem mr-7 text-base font-semibold hover:text-gray-500 active:bg-gray-200'>기준표</button>
           </Link>
           <Link href='/barcode'>
-            <button className='flex w-36 h-[4vh] justify-center items-center border-b-2 border-menuitem mr-7 text-base font-semibold'>영양소 추가</button>
+            <button className='flex w-36 h-[4vh] justify-center items-center border-b-2 border-menuitem mr-7 text-base font-semibold active:bg-gray-200'>영양소 추가</button>
           </Link>
           <Dropdown />
           <Link href='/board'>
-            <button className='flex w-36 h-[4vh] justify-center items-center border-b-2 border-menuitem mr-7 text-base font-semibold'>고객 지원</button>
+            <button className='flex w-36 h-[4vh] justify-center items-center border-b-2 border-menuitem mr-7 text-base font-semibold active:bg-gray-200'>고객 지원</button>
           </Link>
 
           {isLogined ? (
