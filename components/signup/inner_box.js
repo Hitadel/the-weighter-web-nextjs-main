@@ -158,13 +158,13 @@ const InnerBox = () => {
         )}
         <input
           className='flex w-4/5 h-12 border-gray-400 border-[1px] rounded-lg mt-2 px-3 dark:bg-neutral-900
-          dark:bg-neutral-900'
+          '
           placeholder='휴대폰 번호'
           onChange={(e) => setPhone(e.target.value)}
         />
         <input
           className='flex w-4/5 h-12 border-gray-400 border-[1px] rounded-lg mt-5 px-3 dark:bg-neutral-900
-          dark:bg-neutral-900'
+          '
           placeholder='비밀번호'
           type='password'
           onChange={(e) => setPassword(e.target.value)}
@@ -178,7 +178,7 @@ const InnerBox = () => {
         <label className='flex justify-end w-4/5 mb-1 text-sm text-gray-500'>숫자, 특수 문자 필요 (!, @, #, $, %)</label>
         <input
           className='flex w-4/5 h-12 border-gray-400 border-[1px] rounded-lg px-3 dark:bg-neutral-900
-          dark:bg-neutral-900'
+          '
           placeholder='비밀번호 확인'
           type='password'
           onChange={(e) => setPasswordConfirm(e.target.value)}
