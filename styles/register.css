@@ -1,0 +1,779 @@
+.loginPageChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2445.19px;
+  height: 1592.09px;
+}
+.wrapper_backg {
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  width: 1049px;
+  height: 760px;
+}
+.loginb {
+  top: 63px;
+  left: 524px;
+  border-radius: 0 var(--br-lg) var(--br-lg) 0;
+  background-color: var(--color-gray-100);
+  width: 474px;
+  height: 634px;
+}
+.box,
+.div,
+.loginb {
+  position: absolute;
+}
+.box {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--br-lg);
+  background-color: var(--color-teal-100);
+}
+.div {
+  height: 56%;
+  width: 57.69%;
+  top: 22%;
+  left: 21.54%;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box1,
+.idle {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.idle {
+  position: absolute;
+  right: 0;
+}
+.box1 {
+  border-radius: var(--br-lg);
+  background-color: var(--color-gray-500);
+}
+.box1,
+.hoverMouse,
+.resetBox {
+  position: absolute;
+  right: 0;
+}
+.hoverMouse {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  color: var(--color-gray-1300);
+}
+.resetBox {
+  height: 9.63%;
+  width: 33.59%;
+  top: 60.12%;
+  bottom: 30.25%;
+  left: 66.41%;
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+}
+.div2 {
+  top: 284px;
+  left: 228px;
+  letter-spacing: 0.04em;
+  line-height: 15px;
+  color: var(--color-brown);
+}
+.box2,
+.div2,
+.text {
+  position: absolute;
+}
+.box2 {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--br-sm);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-600);
+  box-sizing: border-box;
+}
+.text {
+  height: 33.33%;
+  width: 41.09%;
+  top: 17.65%;
+  left: 4.39%;
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  display: inline-block;
+}
+.visibleIcon {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.invisibleChild,
+.invisibleItem,
+.visibleIcon {
+  position: absolute;
+  max-width: 100%;
+  overflow: hidden;
+}
+.invisibleChild {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  object-fit: cover;
+}
+.invisibleItem {
+  width: 115.45%;
+  top: 19.23%;
+  right: -115.45%;
+  left: 100%;
+  height: 0;
+}
+.invisible {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+}
+.invisibleIcon {
+  position: absolute;
+  height: 50.98%;
+  width: 6.72%;
+  top: 25.49%;
+  right: 3.62%;
+  bottom: 23.53%;
+  left: 89.66%;
+}
+.null {
+  position: absolute;
+  height: 47.06%;
+  width: 39.02%;
+  top: 52.94%;
+  left: 4.39%;
+  font-size: var(--font-size-base);
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  color: var(--color-black);
+  display: inline-block;
+}
+.comfirmPassword {
+  position: absolute;
+  height: 9.83%;
+  width: 100%;
+  top: 43.55%;
+  right: 1.03%;
+  bottom: 46.63%;
+  left: -1.03%;
+  text-align: left;
+}
+.aZAZ {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.p {
+  margin: 0;
+}
+.aZAZContainer,
+.text1 {
+  position: absolute;
+  letter-spacing: 0.04em;
+  display: inline-block;
+}
+.aZAZContainer {
+  height: 5.78%;
+  width: 100%;
+  top: 37.19%;
+  left: -1.03%;
+  font-size: var(--font-size-2xs);
+  line-height: 15px;
+}
+.text1 {
+  height: 33.33%;
+  width: 21.96%;
+  top: 17.65%;
+  left: 4.39%;
+  line-height: 10px;
+}
+.password {
+  position: absolute;
+  height: 9.83%;
+  width: 100%;
+  top: 26.59%;
+  right: 1.03%;
+  bottom: 63.58%;
+  left: -1.03%;
+  text-align: left;
+}
+.div3 {
+  height: 3.28%;
+  width: 70.28%;
+  top: 21.19%;
+  left: 29.72%;
+  letter-spacing: 0.04em;
+  line-height: 15px;
+  display: inline-block;
+}
+.b,
+.div3,
+.unlock {
+  position: absolute;
+}
+.b {
+  height: 7.71%;
+  width: 49.1%;
+  top: 8.86%;
+  left: 47.29%;
+  font-size: var(--font-size-2xl);
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  display: flex;
+  color: var(--color-gray-1500);
+  align-items: center;
+}
+.unlock {
+  height: 11.76%;
+  width: 19.61%;
+  top: 28.43%;
+  right: 15.69%;
+  bottom: 59.8%;
+  left: 64.71%;
+  background-color: var(--color-gray-100);
+}
+.reset,
+.unlockImage {
+  position: absolute;
+  height: 19.65%;
+  width: 26.36%;
+  top: 0;
+  right: 73.64%;
+  bottom: 80.35%;
+  left: 0;
+}
+.reset {
+  height: 100%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+.div6,
+.null2 {
+  letter-spacing: 0.04em;
+}
+.div6 {
+  position: absolute;
+  top: 284px;
+  left: 160px;
+  line-height: 15px;
+  color: var(--color-brown);
+}
+.null2 {
+  height: 47.06%;
+  width: 39.02%;
+  top: 52.94%;
+  left: 4.39%;
+  line-height: 10px;
+  display: inline-block;
+}
+.email,
+.null2,
+.text2 {
+  position: absolute;
+}
+.text2 {
+  height: 33.33%;
+  width: 16.28%;
+  top: 17.65%;
+  left: 4.39%;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  color: var(--color-gray-1400);
+  display: inline-block;
+}
+.email {
+  height: 9.83%;
+  width: 100%;
+  top: 42.39%;
+  right: 0;
+  bottom: 47.78%;
+  left: 0;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+}
+.placeholder {
+  position: absolute;
+  height: 33.33%;
+  width: 21.62%;
+  top: 15.69%;
+  left: 9.19%;
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  display: inline-block;
+}
+.txt {
+  line-break: anywhere;
+  width: 100%;
+}
+.div7 {
+  position: absolute;
+  height: 47.06%;
+  width: 81.62%;
+  top: 52.94%;
+  left: 9.19%;
+  font-size: var(--font-size-base);
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+}
+.firstName,
+.lastName {
+  position: absolute;
+  height: 9.83%;
+  width: 47.8%;
+  top: 29.09%;
+  right: 0;
+  bottom: 61.08%;
+  left: 52.2%;
+  text-align: left;
+}
+.firstName {
+  right: 52.2%;
+  left: 0;
+}
+.findAPassword,
+.signupBox {
+  position: absolute;
+  top: 121px;
+  left: 568px;
+  width: 387px;
+  height: 519px;
+}
+.signupBox {
+  height: 9.63%;
+  width: 33.59%;
+  top: 90.37%;
+  right: 0;
+  bottom: 0;
+  left: 66.41%;
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+}
+.checkBoxIcon {
+  position: absolute;
+  height: 2.89%;
+  width: 3.88%;
+  top: 82.27%;
+  right: 1.81%;
+  bottom: 14.84%;
+  left: 94.32%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.span {
+  color: var(--color-gray-1400);
+}
+.div12 {
+  position: absolute;
+  height: 5.78%;
+  width: 59.95%;
+  top: 82.27%;
+  left: 33.07%;
+  font-size: var(--font-size-2xs);
+  letter-spacing: 0.04em;
+  line-height: 15px;
+  text-align: right;
+  display: inline-block;
+  color: var(--color-teal-200);
+}
+.comfirmPassword1 {
+  height: 9.83%;
+  top: 68.02%;
+  right: 0;
+  bottom: 22.16%;
+}
+.aZAZContainer1,
+.comfirmPassword1,
+.password1 {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.aZAZContainer1 {
+  height: 5.78%;
+  top: 61.66%;
+  font-size: var(--font-size-2xs);
+  letter-spacing: 0.04em;
+  line-height: 15px;
+  text-align: right;
+  display: inline-block;
+}
+.password1 {
+  height: 9.83%;
+  top: 51.06%;
+  right: 0;
+  bottom: 39.11%;
+}
+.text5 {
+  position: absolute;
+  height: 33.33%;
+  width: 25.32%;
+  top: 17.65%;
+  left: 4.39%;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  color: var(--color-gray-1400);
+  display: inline-block;
+}
+.email1,
+.lastName1 {
+  height: 9.83%;
+  right: 0;
+}
+.email1 {
+  position: absolute;
+  width: 100%;
+  top: 37.76%;
+  bottom: 52.41%;
+  left: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+}
+.lastName1 {
+  width: 47.8%;
+  top: 24.47%;
+  bottom: 65.7%;
+  left: 52.2%;
+}
+.b2,
+.firstName1,
+.lastName1 {
+  position: absolute;
+}
+.firstName1 {
+  height: 9.83%;
+  width: 47.8%;
+  top: 24.47%;
+  right: 52.2%;
+  bottom: 65.7%;
+  left: 0;
+}
+.b2 {
+  height: 7.71%;
+  width: 49.1%;
+  top: 8.86%;
+  left: 47.29%;
+  font-size: var(--font-size-2xl);
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  display: flex;
+  color: var(--color-gray-1500);
+  text-align: right;
+  align-items: center;
+}
+.lockImageIcon2 {
+  position: absolute;
+  height: 19.65%;
+  width: 26.36%;
+  top: 0;
+  right: 73.64%;
+  bottom: 80.35%;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.signUp {
+  position: absolute;
+  height: 68.29%;
+  width: 36.89%;
+  top: 15.92%;
+  right: 8.96%;
+  bottom: 15.79%;
+  left: 54.15%;
+  display: none;
+  text-align: left;
+}
+.div15,
+.div16,
+.div17 {
+  position: absolute;
+  height: 7.41%;
+  width: 47.55%;
+  top: 92.59%;
+  left: 52.71%;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+.div16,
+.div17 {
+  width: 28.17%;
+  top: 85.19%;
+  left: 71.83%;
+}
+.div17 {
+  height: 4.94%;
+  width: 45.48%;
+  top: 86.42%;
+  left: 34.11%;
+  color: var(--color-gray-1200);
+}
+.loginBox {
+  position: absolute;
+  height: 12.35%;
+  width: 33.59%;
+  top: 67.41%;
+  right: 0;
+  bottom: 20.25%;
+  left: 66.41%;
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+}
+.text6 {
+  position: absolute;
+  height: 66.67%;
+  width: 55.81%;
+  top: 17.65%;
+  left: 4.91%;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+.invisibleChild5,
+.visibleIcon4 {
+  position: absolute;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.visibleIcon4 {
+  height: 100%;
+  width: 100%;
+  top: 788.46%;
+  right: -1334.62%;
+  bottom: -788.46%;
+  left: 1334.62%;
+  object-fit: cover;
+  display: none;
+}
+.invisibleChild5 {
+  height: 61.54%;
+  width: 101.03%;
+  top: 20.64%;
+  right: -2.44%;
+  bottom: 17.82%;
+  left: 1.41%;
+}
+.password2 {
+  position: absolute;
+  height: 12.59%;
+  width: 100%;
+  top: 47.41%;
+  right: 0;
+  bottom: 40%;
+  left: 0;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-gray-1400);
+}
+.text7 {
+  height: 66.67%;
+  width: 55.81%;
+  top: 15.69%;
+  left: 4.91%;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+.b3,
+.email2,
+.text7 {
+  position: absolute;
+}
+.email2 {
+  height: 12.59%;
+  width: 100%;
+  top: 27.41%;
+  right: 0;
+  bottom: 60%;
+  left: 0;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-gray-1400);
+}
+.b3 {
+  height: 9.88%;
+  width: 67.7%;
+  top: 0;
+  left: 28.68%;
+  font-size: var(--font-size-2xl);
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  display: flex;
+  color: var(--color-gray-1500);
+  align-items: center;
+}
+.loginImageIcon {
+  position: absolute;
+  height: 25.19%;
+  width: 26.36%;
+  top: -11.36%;
+  right: 73.64%;
+  bottom: 86.17%;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.signIn {
+  position: absolute;
+  top: 167px;
+  left: 568px;
+  width: 387px;
+  height: 405px;
+  font-size: var(--nav-link-01-size);
+  color: var(--color-teal-200);
+  display: none;
+}
+.imagebIcon,
+.logoIcon {
+  position: absolute;
+  object-fit: cover;
+}
+.imagebIcon {
+  top: 63px;
+  left: 50px;
+  border-radius: var(--br-lg) 0 0 var(--br-lg);
+  width: 474px;
+  height: 634px;
+}
+.logoIcon {
+  top: 620px;
+  left: 80px;
+  width: 190px;
+  height: 47px;
+}
+.backg,
+.wrapper {
+  position: absolute;
+  top: 130px;
+  left: 436px;
+  width: 1049px;
+  height: 760px;
+}
+.backg1 {
+  top: 0;
+  left: 0;
+  background-color: var(--color-teal-200);
+  width: 1920px;
+  height: 99px;
+}
+.icon,
+.icon1 {
+  top: 0;
+  background-color: var(--color-turquoise);
+}
+.icon {
+  position: absolute;
+  left: 0;
+  width: 39px;
+  height: 39px;
+}
+.icon1 {
+  left: 60px;
+  width: 40px;
+}
+.footer1,
+.icon1,
+.icon2,
+.link {
+  position: absolute;
+  height: 39px;
+}
+.icon2 {
+  top: 0;
+  left: 121px;
+  background-color: var(--color-turquoise);
+  width: 39px;
+}
+.footer1,
+.link {
+  top: 50px;
+  left: 1750px;
+  width: 160px;
+}
+.footer1 {
+  height: 39.39%;
+  width: 13.23%;
+  top: 60.61%;
+  left: 43.39%;
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+}
+.footer {
+  position: absolute;
+  top: 981px;
+  left: 0;
+  width: 1920px;
+  height: 99px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--nav-link-01);
+}
+.loginPage {
+  position: relative;
+  width: 100%;
+  height: 1080px;
+  overflow: hidden;
+  text-align: right;
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-1400);
+  font-family: var(--font-sansation);
+}

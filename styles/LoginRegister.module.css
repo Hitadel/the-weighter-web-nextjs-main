@@ -1,0 +1,841 @@
+.backg,
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2445.19px;
+  height: 1592.09px;
+}
+.backg {
+  background-color: #00919e;
+  width: 1920px;
+  height: 99px;
+}
+.icon,
+.icon1 {
+  top: 0;
+  background-color: #00fdcf;
+}
+.icon {
+  position: absolute;
+  left: 0;
+  width: 39px;
+  height: 39px;
+}
+.icon1 {
+  left: 60px;
+  width: 40px;
+}
+.icon1,
+.icon2,
+.link {
+  position: absolute;
+  height: 39px;
+}
+.icon2 {
+  top: 0;
+  left: 121px;
+  background-color: #00fdcf;
+  width: 39px;
+}
+.link {
+  top: 50px;
+  left: 1750px;
+  width: 160px;
+}
+.copyrightWeighter {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.footerTxt {
+  line-break: anywhere;
+  width: 100%;
+}
+.footer1 {
+  position: absolute;
+  height: 39.39%;
+  width: 13.23%;
+  top: 60.61%;
+  left: 43.39%;
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+}
+.wrapBg,
+.footer {
+  position: absolute;
+  top: 981px;
+  left: 0;
+  width: 1920px;
+  height: 99px;
+}
+.wrapBg {
+  top: 0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  width: 1049px;
+  height: 760px;
+}
+.formBg {
+  top: 63px;
+  left: 524px;
+  border-radius: 0 20px 20px 0;
+  background-color: #f5f5f5;
+  width: 474px;
+  height: 634px;
+}
+.box,
+.formBg {
+  position: absolute;
+}
+.box {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 20px;
+  
+}
+.btn:hover {
+  background-color: #8ec1c6;
+}
+.div {
+  position: absolute;
+  height: 56%;
+  width: 57.69%;
+  top: 22%;
+  left: 21.54%;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box1,
+.btn {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 20px;
+  background-color: #699da1;
+}
+.btn {
+  position: absolute;
+  right: 0;
+}
+
+.box1 {
+  border-radius: 20px;
+  background-color: #8ec1c6;
+}
+.box1,
+.resetBox {
+  position: absolute;
+  right: 0;
+}
+.resetBox {
+  height: 9.63%;
+  width: 33.59%;
+  top: 60.12%;
+  bottom: 30.25%;
+  left: 66.41%;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+}
+.div2 {
+  top: 284px;
+  left: 228px;
+  letter-spacing: 0.04em;
+  line-height: 15px;
+  color: #9e0000;
+}
+.box2,
+.div2,
+.text {
+  position: absolute;
+}
+.box2 {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #a3a3a3;
+  box-sizing: border-box;
+}
+.text {
+  border: 0;
+  font-family: Sansation;
+  font-size: 12px;
+  background-color: transparent;
+  height: 33.33%;
+  width: 41.09%;
+  top: 17.65%;
+  left: 4.39%;
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: left;
+  display: inline-block;
+}
+.visibleIcon {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.invisibleChild,
+.invisibleItem,
+.visibleIcon {
+  position: absolute;
+  max-width: 100%;
+  overflow: hidden;
+}
+.invisibleChild {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  object-fit: cover;
+}
+.invisibleItem {
+  width: 115.45%;
+  top: 19.23%;
+  right: -115.45%;
+  left: 100%;
+  height: 0;
+}
+.invisible {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+}
+.invisibleIcon {
+  position: absolute;
+  height: 50.98%;
+  width: 6.72%;
+  top: 25.49%;
+  right: 3.62%;
+  bottom: 23.53%;
+  left: 89.66%;
+}
+.null {
+  position: absolute;
+  height: 47.06%;
+  width: 39.02%;
+  top: 52.94%;
+  left: 4.39%;
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  display: inline-block;
+}
+.comfirmPassword {
+  position: absolute;
+  height: 9.83%;
+  width: 100%;
+  top: 43.55%;
+  right: 1.03%;
+  bottom: 46.63%;
+  left: -1.03%;
+  text-align: left;
+  font-size: 16px;
+  color: #000;
+}
+.p {
+  margin: 0;
+}
+.aZAZContainer,
+.null1,
+.text1 {
+  position: absolute;
+  letter-spacing: 0.04em;
+  display: inline-block;
+}
+.aZAZContainer {
+  height: 5.78%;
+  width: 100%;
+  top: 37.19%;
+  left: -1.03%;
+  font-size: 10px;
+  line-height: 15px;
+}
+.null1,
+.text1 {
+  height: 33.33%;
+  width: 21.96%;
+  top: 17.65%;
+  left: 4.39%;
+  line-height: 10px;
+}
+.null1 {
+  height: 47.06%;
+  width: 39.02%;
+  top: 52.94%;
+  font-size: 16px;
+  color: #000;
+}
+.password {
+  position: absolute;
+  height: 9.83%;
+  width: 100%;
+  top: 26.59%;
+  right: 1.03%;
+  bottom: 63.58%;
+  left: -1.03%;
+  text-align: left;
+}
+.div3 {
+  height: 3.28%;
+  width: 70.28%;
+  top: 21.19%;
+  left: 29.72%;
+  letter-spacing: 0.04em;
+  line-height: 15px;
+  display: inline-block;
+}
+.b,
+.div3,
+.unlock {
+  position: absolute;
+}
+.b {
+  height: 7.71%;
+  width: 49.1%;
+  top: 8.86%;
+  left: 47.29%;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  display: flex;
+  color: rgba(0, 0, 0, 0.75);
+  align-items: center;
+}
+.unlock {
+  height: 11.76%;
+  width: 19.61%;
+  top: 28.43%;
+  right: 15.69%;
+  bottom: 59.8%;
+  left: 64.71%;
+  background-color: #f5f5f5;
+}
+.reset,
+.unlockImage {
+  position: absolute;
+  height: 19.65%;
+  width: 26.36%;
+  top: 0;
+  right: 73.64%;
+  bottom: 80.35%;
+  left: 0;
+}
+.reset {
+  height: 100%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+.div6 {
+  top: 284px;
+  left: 160px;
+  letter-spacing: 0.04em;
+  line-height: 15px;
+  color: #9e0000;
+}
+.div6,
+.email,
+.text2 {
+  position: absolute;
+}
+.text2 {
+  height: 33.33%;
+  width: 16.28%;
+  top: 17.65%;
+  left: 4.39%;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+}
+.email {
+  height: 9.83%;
+  width: 100%;
+  top: 42.39%;
+  right: 0;
+  bottom: 47.78%;
+  left: 0;
+  text-align: left;
+  font-size: 16px;
+  color: #000;
+}
+.div7,
+.placeholder {
+  position: absolute;
+  left: 9.19%;
+  letter-spacing: 0.04em;
+  line-height: 10px;
+}
+.placeholder {
+  height: 33.33%;
+  width: 21.62%;
+  top: 15.69%;
+  display: inline-block;
+}
+.div7 {
+  height: 47.06%;
+  width: 81.62%;
+  top: 52.94%;
+  font-size: 16px;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+.firstName,
+.lastName {
+  position: absolute;
+  height: 9.83%;
+  width: 47.8%;
+  top: 29.09%;
+  right: 0;
+  bottom: 61.08%;
+  left: 52.2%;
+  text-align: left;
+}
+.firstName {
+  right: 52.2%;
+  left: 0;
+}
+.findAPassword {
+  position: absolute;
+  top: 121px;
+  left: 568px;
+  width: 387px;
+  height: 519px;
+  display: none;
+}
+.signupBox {
+  position: absolute;
+  height: 9.63%;
+  width: 33.59%;
+  top: 96.15%;
+  right: 0;
+  bottom: -5.78%;
+  left: 66.41%;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+}
+.passwordCheck {
+  position: absolute;
+  height: 5.81%;
+  width: 13.95%;
+  top: 86.71%;
+  right: 86.05%;
+  bottom: 7.48%;
+  left: 0;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+}
+.div13,
+.div14 {
+  position: absolute;
+  top: 13.85%;
+  left: 20.87%;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+}
+.div14 {
+  top: 15.37%;
+  left: 21.54%;
+}
+.checkBoxIcon {
+  position: absolute;
+  height: 2.89%;
+  width: 3.88%;
+  top: 88.05%;
+  right: 1.81%;
+  bottom: 9.06%;
+  left: 94.32%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.span {
+  color: rgba(0, 0, 0, 0.5);
+}
+.div12,
+.text3 {
+  position: absolute;
+  letter-spacing: 0.04em;
+  display: inline-block;
+}
+.div12 {
+  height: 5.78%;
+  width: 59.95%;
+  top: 88.05%;
+  left: 33.07%;
+  font-size: 10px;
+  line-height: 15px;
+  text-align: right;
+  color: #00919e;
+}
+.text3 {
+  height: 33.33%;
+  width: 41.09%;
+  top: 17.65%;
+  left: 4.39%;
+  line-height: 10px;
+}
+.invisibleChild1,
+.visibleIcon2 {
+  position: absolute;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.visibleIcon2 {
+  height: 100%;
+  width: 100%;
+  top: 1550%;
+  right: -1334.62%;
+  bottom: -1550%;
+  left: 1334.62%;
+  object-fit: cover;
+  display: none;
+}
+.invisibleChild1 {
+  height: 61.54%;
+  width: 101.03%;
+  top: 20.64%;
+  right: -2.44%;
+  bottom: 17.82%;
+  left: 1.41%;
+}
+.aZAZContainer1,
+.comfirmPassword1 {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.comfirmPassword1 {
+  height: 9.83%;
+  top: 75.14%;
+  right: 0;
+  bottom: 15.03%;
+}
+.aZAZContainer1 {
+  height: 5.78%;
+  top: 68.79%;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  line-height: 15px;
+  text-align: right;
+  display: inline-block;
+}
+.visibleIcon3 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 1215.38%;
+  right: -1334.62%;
+  bottom: -1215.38%;
+  left: 1334.62%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.password1,
+.phonenumber {
+  position: absolute;
+  height: 9.83%;
+  width: 100%;
+  top: 58.38%;
+  right: 0;
+  bottom: 31.79%;
+  left: 0;
+}
+.phonenumber {
+  top: 47.01%;
+  bottom: 43.16%;
+}
+.emailCheck {
+  position: absolute;
+  height: 5.81%;
+  width: 13.95%;
+  top: 38.15%;
+  right: 0;
+  bottom: 56.04%;
+  left: 86.05%;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+}
+.text6 {
+  position: absolute;
+  height: 33.33%;
+  width: 25.32%;
+  top: 17.65%;
+  left: 4.39%;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+}
+.email1,
+.lastName1 {
+  height: 9.83%;
+  right: 0;
+}
+.email1 {
+  position: absolute;
+  height: 9.83%;
+  width: 83.98%;
+  top: 35.84%;
+  right: 16.02%;
+  bottom: 54.34%;
+  left: 0;
+  font-size: 16px;
+  color: #000;
+}
+.lastName1 {
+  width: 47.8%;
+  top: 24.47%;
+  bottom: 65.7%;
+  left: 52.2%;
+}
+.b2,
+.firstName1,
+.lastName1 {
+  position: absolute;
+}
+.firstName1 {
+  height: 9.83%;
+  width: 47.8%;
+  top: 24.47%;
+  right: 52.2%;
+  bottom: 65.7%;
+  left: 0;
+}
+.b2 {
+  top: 11.18%;
+  left: 65.12%;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.75);
+  text-align: right;
+}
+.lockImageIcon2 {
+  position: absolute;
+  height: 19.65%;
+  width: 26.36%;
+  top: 0;
+  right: 73.64%;
+  bottom: 80.35%;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.signUp {
+  position: absolute;
+  height: 68.29%;
+  width: 36.89%;
+  top: 15.92%;
+  right: 8.96%;
+  bottom: 15.79%;
+  left: 54.15%;
+  text-align: left;
+}
+.div15,
+.div16,
+.div17 {
+  position: absolute;
+  height: 7.41%;
+  width: 47.55%;
+  top: 92.59%;
+  left: 52.71%;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+.div16,
+.div17 {
+  width: 28.17%;
+  top: 85.19%;
+  left: 71.83%;
+}
+.div17 {
+  height: 4.94%;
+  width: 45.48%;
+  top: 86.42%;
+  left: 34.11%;
+  color: rgba(0, 0, 0, 0.25);
+}
+.loginBox {
+  position: absolute;
+  height: 12.35%;
+  width: 33.59%;
+  top: 67.41%;
+  right: 0;
+  bottom: 20.25%;
+  left: 66.41%;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+}
+.text7 {
+  position: absolute;
+  height: 66.67%;
+  width: 55.81%;
+  top: 17.65%;
+  left: 4.91%;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+.password2 {
+  position: absolute;
+  height: 12.59%;
+  width: 100%;
+  top: 47.41%;
+  right: 0;
+  bottom: 40%;
+  left: 0;
+  text-align: left;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.text8 {
+  height: 66.67%;
+  width: 55.81%;
+  top: 15.69%;
+  left: 4.91%;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+.b3,
+.email2,
+.text8 {
+  position: absolute;
+}
+.email2 {
+  height: 12.59%;
+  width: 100%;
+  top: 27.41%;
+  right: 0;
+  bottom: 60%;
+  left: 0;
+  text-align: left;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.b3 {
+  height: 9.88%;
+  width: 67.7%;
+  top: 0;
+  left: 28.68%;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  display: flex;
+  color: rgba(0, 0, 0, 0.75);
+  align-items: center;
+}
+.loginImageIcon {
+  position: absolute;
+  height: 25.19%;
+  width: 26.36%;
+  top: -11.36%;
+  right: 73.64%;
+  bottom: 86.17%;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.signIn {
+  position: absolute;
+  top: 167px;
+  left: 568px;
+  width: 387px;
+  height: 405px;
+  display: none;
+  font-size: 14px;
+  color: #00919e;
+}
+.imagebIcon,
+.logoIcon {
+  position: absolute;
+  object-fit: cover;
+}
+.imagebIcon {
+  top: 63px;
+  left: 50px;
+  border-radius: 20px 0 0 20px;
+  width: 474px;
+  height: 634px;
+}
+.logoIcon {
+  top: 620px;
+  left: 80px;
+  width: 190px;
+  height: 47px;
+}
+.wrapper {
+  position: absolute;
+  top: 160px;
+  left: 436px;
+  width: 1049px;
+  height: 760px;
+  text-align: right;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Sansation;
+}
+.setting {
+  position: relative;
+  width: 100%;
+  height: 1080px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  font-family: Roboto;
+}
