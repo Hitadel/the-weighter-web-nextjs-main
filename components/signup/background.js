@@ -1,5 +1,5 @@
 const Background = ({ children }) => {
-  return <div className='flex w-full h-full bg-auth justify-center items-center'>{children}</div>
-}
+  return <div className='flex items-center justify-center bg-center bg-cover lg:w-screen w-full h-[120vh] lg:h-screen bg-auth dark:text-white'>{children}</div>;
+};
 
-export default Background
+export default Background;

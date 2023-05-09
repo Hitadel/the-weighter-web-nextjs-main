@@ -10,14 +10,17 @@ export default function Squat() {
   const [up, setUp] = useState(false);
 
   const checkPoses = (pose) => {
-    const { rightHip, rightKnee, leftHip, leftKnee } = getKeypointsObject(pose);
+    const { right_hip, right_knee, left_hip, left_knee } = getKeypointsObject(pose);
+    console.log(getKeypointsObject(pose));
 
     const angleKnee = {
-      rightHigh: getAngle(rightHip.x, rightHip.y, rightKnee.x, rightKnee.y),
-      leftHigh: getAngle(leftHip.x, leftHip.y, leftKnee.x, leftKnee.y),
+      rightHigh: getAngle(right_hip.x, right_hip.y, right_knee.x, right_knee.y),
+      leftHigh: getAngle(left_hip.x, left_hip.y, left_knee.x, left_knee.y),
     };
 
-    if (rightKnee.score > 0.5 && leftKnee.score > 0.5) {
+    console.log(angleKnee);
+
+    if (right_knee.score > 0.5 && left_knee.score > 0.5) {
       setUp(checkUp(angleKnee));
       setDown(checkDown(angleKnee));
     } else {

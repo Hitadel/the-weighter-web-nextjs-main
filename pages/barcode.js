@@ -25,6 +25,7 @@ const Barcode = () => {
       infoRequest
         .get("getFoodNtrItdntList1?serviceKey=" + process.env.NEXT_PUBLIC_PRODUCT_KEY + "&desc_kor=" + name + "&type=json")
         .then((res) => {
+          console.log(res.data.body);
           setData(res.data.body.items[0]);
         })
         .catch((err) => console.error(err));

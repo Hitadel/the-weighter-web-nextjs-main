@@ -4,7 +4,6 @@ const color = "white";
 const lineWidth = 1;
 
 export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {
-  console.log(keypoints);
   for (let i = 0; i < keypoints.length; i++) {
     const keypoint = keypoints[i];
     if (keypoint.score < minConfidence) {
@@ -36,12 +35,13 @@ export function drawPoints(ctx, points, radius, color) {
   }
 }
 
-export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
+export function drawSkeleton(keypoints, minConfidence, scale = 1) {
   const adjacentKeyPoints = posenet.getAdjacentKeyPoints(keypoints, minConfidence);
+  console.log(adjacentKeyPoints);
 
-  adjacentKeyPoints.forEach((keypoints) => {
-    drawSegment(toTuple(keypoints[0]), toTuple(keypoints[1]), color, scale, ctx);
-  });
+  // adjacentKeyPoints.forEach((keypoints) => {
+  //   drawSegment(toTuple(keypoints[0]), toTuple(keypoints[1]), color, scale, ctx);
+  // });
 }
 
 function toTuple({ y, x }) {

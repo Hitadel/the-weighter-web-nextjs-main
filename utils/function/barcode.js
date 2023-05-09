@@ -65,6 +65,7 @@ export const getName = (barcode, setName) => {
     barcodeRequest
       .get("BAR_CD=" + barcode)
       .then((res) => {
+        // console.log(res.data);
         setName(res.data.C005.row[0].PRDLST_NM);
       })
       .catch((err) => {

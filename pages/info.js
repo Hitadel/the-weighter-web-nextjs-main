@@ -5,7 +5,7 @@ import CommonLayout from "../components/layout/CommonLayout"
 
 const info = () => {
   return (
-    <CommonLayout>
+    <CommonLayout >
       <Info1 />
       <Info2 />
       <Info3 />

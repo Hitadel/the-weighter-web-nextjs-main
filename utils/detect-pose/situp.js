@@ -9,22 +9,25 @@ export default function Situp() {
   const [down, setDown] = useState(false);
   const [up, setUp] = useState(false);
 
-  const checkPoses = useCallback((pose) => {
-    const { rightHip, leftHip, rightShoulder, leftShoulder } = getKeypointsObject(pose);
+  const checkPoses = useCallback(
+    (pose) => {
+      const { right_hip, left_hip, right_shoulder, left_shoulder } = getKeypointsObject(pose);
 
-    const angleHip = {
-      rightHigh: getAngle(rightShoulder.x, rightShoulder.y, rightHip.x, rightHip.y),
-      leftHigh: getAngle(leftShoulder.x, leftShoulder.y, leftHip.x, leftHip.y),
-    };
+      const angleHip = {
+        rightHigh: getAngle(right_shoulder.x, right_shoulder.y, right_hip.x, right_hip.y),
+        leftHigh: getAngle(left_shoulder.x, left_shoulder.y, left_hip.x, left_hip.y),
+      };
 
-    if (rightShoulder.score > 0.5 && leftShoulder.score > 0.5) {
-      setUp(checkUp(angleHip));
-      setDown(checkDown(angleHip));
-    } else {
-      setUp(false);
-      setDown(false);
-    }
-  });
+      if (right_shoulder.score > 0.5 && left_shoulder.score > 0.5) {
+        setUp(checkUp(angleHip));
+        setDown(checkDown(angleHip));
+      } else {
+        setUp(false);
+        setDown(false);
+      }
+    },
+    [pose]
+  );
 
   useEffect(() => {
     if (step == 0 && up) {

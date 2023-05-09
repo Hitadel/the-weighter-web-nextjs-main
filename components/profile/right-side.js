@@ -1,29 +1,36 @@
-const RightSide = () => {
+import { useState, useEffect } from "react";
+import Status from "./right-sides/Status";
+import Plan from "./right-sides/Plan";
+
+const RightSide = ({ age, height, weight, disease, allergy }) => {
+  const [show, setShow] = useState("status");
+
   return (
-    <div className='flex w-3/5 h-[95%] bg-white rounded-2xl items-center justify-center shadow-shadow text-black font-bold'>
-      <div className='flex w-[90%] h-[90%] flex-col items-center justify-center'>
-        <button className='flex w-full h-1/7 bg-gray-200 rounded-t-lg p-5 flex-col hover:bg-hover hover:transition'>신체 정보</button>
-        <div className='flex w-full h-1/7 bg-gray-400 rounded-b-lg p-5 mb-10 flex-col overflow-auto'>
-          <div>나이:{"살"}</div>
-          <div>키:{"cm"}</div>
-          <div>몸무게:{"kg"}</div>
-          <div>질병:{""}</div>
-          <div>알러지:{""}</div>
-          <button className='flex w-20 h-12 items-center justify-center bg-button rounded-lg shadow-shadow mt-7 text-white text-[15px] hover:bg-hover hover:transition'>변경</button>
-        </div>
-        <button className='flex w-full h-1/7 bg-gray-200 rounded-t-lg p-5 flex-col hover:bg-hover hover:transition'>영양 기록</button>
-        <div className='flex w-full h-1/7 bg-gray-400 rounded-b-lg p-5 mb-10 flex-col overflow-auto'>
-          <div>{"달력"}</div>
-          <div>{"막대그래프"}</div>
-        </div>
-        <button className='flex w-full h-1/7 bg-gray-200 rounded-t-lg p-5 flex-co  hover:bg-hover hover:transition'>운동 기록</button>
-        <div className='flex w-full h-1/7 bg-gray-400 rounded-b-lg p-5 mb-10 flex-col overflow-auto'>
-          <div>{"달력"}</div>
-          <div>{"막대그래프"}</div>
-        </div>
+    <div className='flex flex-col items-center justify-center w-full h-full overflow-auto font-bold text-black bg-white lg:flex-row dark:text-white dark:bg-gray-500 rounded-2xl shadow-shadow change'>
+      <div className='flex w-full lg:w-[12%] h-full lg:flex-col justify-start'>
+        <button
+          className={`flex w-full items-center justify-center h-1/2 text-xl p-5 hover:bg-hover dark:hover:bg-hover hover:transition ${
+            show === "status" ? "bg-gray-400 dark:bg-gray-700" : "bg-gray-200 dark:bg-gray-500"
+          }`}
+          onClick={(e) => setShow("status")}
+        >
+          신체 정보
+        </button>
+        <button
+          className={`flex w-full items-center justify-center h-1/2 text-xl p-5 hover:bg-hover dark:hover:bg-hover hover:transition ${
+            show === "plan" ? "bg-gray-400 dark:bg-gray-700" : "bg-gray-200 dark:bg-gray-500"
+          }`}
+          onClick={(e) => setShow("plan")}
+        >
+          기록
+        </button>
+      </div>
+      <div className='flex flex-col items-center justify-center w-full h-full'>
+        {show === "status" && <Status age={age} height={height} weight={weight} disease={disease} allergy={allergy} />}
+        {show === "plan" && <Plan />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RightSide
+export default RightSide;

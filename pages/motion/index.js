@@ -1,12 +1,12 @@
 import CommonLayout from "../../components/layout/CommonLayout";
 import { useEffect, useState } from "react";
-import MotionResult from "../../components/modal/motionResult";
+import MotionResult from "../../components/modal/MotionResult";
 import { useRouter } from "next/router";
 import axios from "axios";
 import CountScreen from "../../components/motion/count-screen";
 import InsideBox from "../../components/motion/inside-box";
 
-const _TIME = 300;
+const _TIME = 5;
 
 const Motion = () => {
   const router = useRouter();
@@ -20,6 +20,7 @@ const Motion = () => {
   const [ready, setReady] = useState(5);
   const [isFinished, setIsFinished] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isFull, setIsFull] = useState(false);
 
   const onClickStartButton = () => {
     setIsReady(true);
@@ -75,7 +76,15 @@ const Motion = () => {
   return (
     <CommonLayout>
       {isReady && <CountScreen ready={ready} />}
-      <InsideBox type={type} setNowCount={setNowCount} nowCount={nowCount} onClickStartButton={onClickStartButton} isReady={isReady} time={time} />
+      {isFull ? (
+        <div className='flex items-center justify-center w-full h-full bg-gray-200'>
+          <InsideBox type={type} setNowCount={setNowCount} nowCount={nowCount} onClickStartButton={onClickStartButton} isReady={isReady} time={time} isFull={isFull} setIsFull={setIsFull} />
+        </div>
+      ) : (
+        <div className='flex flex-row items-center justify-center w-full h-full'>
+          <InsideBox type={type} setNowCount={setNowCount} nowCount={nowCount} onClickStartButton={onClickStartButton} isReady={isReady} time={time} isFull={isFull} setIsFull={setIsFull} />
+        </div>
+      )}
       <MotionResult
         open={open}
         onClose={() => setOpen(true)}
