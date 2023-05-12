@@ -5,11 +5,14 @@ import ExerciseChart from "../../utils/ExerciseChart";
 import NutritionChart from "../../utils/NutritionChart";
 import GptExerciseChart from "../../utils/GptExerciseChart";
 import GptNutritionChart from "../../utils/GptNutritionChart";
+import AiExercisePlan from "../../utils/AiExercisePlan";
+import AiNutritionPlan from "../../utils/AiNutritionPlan";
 
 const ExerciseStat = () => {
   const [show, setShow] = useState("day");
   const [chartData, setChartData] = useState("");
   const [planData, setPlanData] = useState("");
+  const [listData, setListData] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState("운동 선택");
   const options = ["squat", "pushup", "situp"];
@@ -40,39 +43,51 @@ const ExerciseStat = () => {
 
   
   const adjustData = async (show, date) => {
-    let result, resultGpt
+    let result, resultGpt, aiPlan
     let resultPromise = new Promise((resolve, reject) => {
-      console.log("디버그")
       request()
       .post("profile/chart", { period: show, date, category, type: selectedItem })
       .then((res) => {
         resolve(res.data);
-        console.log(res.data, "디버그2")
       })
       .catch((err) => {
         reject(err);
       });
     })
-      let resultGptPromise = new Promise((resolve, reject) => {
-        request()
-        .post("profile/chart", {period: show, date, category: category+"Plan", type: selectedItem })
-        .then((res) => {
-          resolve(res.data);
-          console.log(res.data, "디버그3")
+    let resultGptPromise = new Promise((resolve, reject) => {
+      request()
+      .post("profile/chart", {period: show, date, category: category+"Plan", type: selectedItem })
+      .then((res) => {
+        resolve(res.data);
         })
         .catch((err) => {
           reject(err);
         });
       });
+    
+    let resultAiPlanPromise = new Promise((resolve, reject) => {
+      request()
+      .post("profile/aiPlan", {period: show, date, category: category+"Plan", type: selectedItem})
+      .then((res) => {
+        resolve(res.data);
+      }).catch((err) => {
+        reject(err);
+      })
+
+    })
+
       try {
         result = await resultPromise;
         resultGpt = await resultGptPromise;
+        aiPlan = await resultAiPlanPromise;
       } catch (err) {
         console.log("에러")
         return;
       }
       setChartData(chartFramework(show, result))
       setPlanData(chartFramework(show, resultGpt))
+      console.log("디버그", aiPlan);
+      setListData(aiPlan);
     }
 
     const chartFramework = (show, result) => { 
@@ -134,7 +149,7 @@ const ExerciseStat = () => {
           else 
           item = {
             name: data,
-            type: 0,
+            type: "휴식",
             count: 0,
             score: 0,
             timer: 0,
@@ -244,29 +259,8 @@ const ExerciseStat = () => {
   <>
     <GptExerciseChart show={show} planData={planData} />
 
-    {planData.length > 0 ? (
-        <ul className="mt-5">
-        {planData.map((item, index) => (
-          <li key={index} className="flex items-center py-2">
-            <input
-              type="checkbox"
-              checked={item.checked}
-              onChange={() => {
-                const newPlanData = [...planData];
-                newPlanData[index].checked = !item.checked;
-                setPlanData(newPlanData);
-              }}
-              className="mr-3"
-            />
-            <span>{item.exercise}</span>
-          </li>
-        ))}
-        {planData.length === 0 && (
-          <li className="flex items-center py-2 text-gray-500">
-            <span>계획이 없습니다.</span>
-          </li>
-        )}
-      </ul>
+    {listData.length > 0 ? (
+      <AiExercisePlan listData = {listData}/>
       ) : (
         <p className="text-white mt-5 text-center">현재 계획이 없습니다.</p>
       )}
@@ -287,7 +281,16 @@ const ExerciseStat = () => {
           식단 계획
         </li>
       </ul>
-      {showNutritionChart && <GptNutritionChart show={show} planData={planData} />}
+      {showNutritionChart && 
+      <>
+      <GptNutritionChart show={show} planData={planData} />
+
+      {listData.length > 0 ? (
+      <AiNutritionPlan listData = {listData}/>
+      ) : (
+        <p className="text-white mt-5 text-center">현재 계획이 없습니다.</p>
+      )}
+    </>}
       </>
     }
     </div>
