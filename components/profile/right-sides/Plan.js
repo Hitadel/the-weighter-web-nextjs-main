@@ -40,40 +40,30 @@ const ExerciseStat = () => {
 
   
   const adjustData = async (show, date) => {
+    let result, resultGpt
     let resultPromise = new Promise((resolve, reject) => {
-      if (category == "nutrition")
+      console.log("디버그")
       request()
-      .post("profile/nutrition", { period: show, date })
+      .post("profile/chart", { period: show, date, category, type: selectedItem })
       .then((res) => {
         resolve(res.data);
+        console.log(res.data, "디버그2")
       })
       .catch((err) => {
         reject(err);
       });
-      else
-      request()
-        .post("profile/Exercise", { period: show, date, condition: selectedItem })
-        .then((res) => {
-          resolve(res.data);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-      });
+    })
       let resultGptPromise = new Promise((resolve, reject) => {
         request()
-        .post("profile/aiPlan", { category: category })
+        .post("profile/chart", {period: show, date, category: category+"Plan", type: selectedItem })
         .then((res) => {
           resolve(res.data);
+          console.log(res.data, "디버그3")
         })
         .catch((err) => {
           reject(err);
         });
       });
-      
-      let result, item, data;
-      let input = [];
-      let newData = [];
       try {
         result = await resultPromise;
         resultGpt = await resultGptPromise;
@@ -81,7 +71,15 @@ const ExerciseStat = () => {
         console.log("에러")
         return;
       }
-      
+      setChartData(chartFramework(show, result))
+      setPlanData(chartFramework(show, resultGpt))
+    }
+
+    const chartFramework = (show, result) => { 
+      let item, data;
+      let input = [];
+      let newData = [];
+
       switch (show) {
         case "week":
           input = new Array(7);
@@ -144,9 +142,7 @@ const ExerciseStat = () => {
           };
           newData.push(item);
         }
-        setChartData(newData);
-        setPlanData(resultGpt);
-        console.log("디버그", planData)
+        return(newData)
       };
       
   return (
@@ -246,25 +242,31 @@ const ExerciseStat = () => {
       </ul>
       {showExerciseChart && 
   <>
-    <GptExerciseChart planData={planData} />
+    <GptExerciseChart show={show} planData={planData} />
+
     {planData.length > 0 ? (
         <ul className="mt-5">
-          {planData.map((item, index) => (
-            <li key={index} className="flex items-center py-2">
-              <input
-                type="checkbox"
-                checked={item.checked}
-                onChange={() => {
-                  const newPlanData = [...planData];
-                  newPlanData[index].checked = !item.checked;
-                  setPlanData(newPlanData);
-                }}
-                className="mr-3"
-              />
-              <span>{item.exercise}</span>
-            </li>
-          ))}
-        </ul>
+        {planData.map((item, index) => (
+          <li key={index} className="flex items-center py-2">
+            <input
+              type="checkbox"
+              checked={item.checked}
+              onChange={() => {
+                const newPlanData = [...planData];
+                newPlanData[index].checked = !item.checked;
+                setPlanData(newPlanData);
+              }}
+              className="mr-3"
+            />
+            <span>{item.exercise}</span>
+          </li>
+        ))}
+        {planData.length === 0 && (
+          <li className="flex items-center py-2 text-gray-500">
+            <span>계획이 없습니다.</span>
+          </li>
+        )}
+      </ul>
       ) : (
         <p className="text-white mt-5 text-center">현재 계획이 없습니다.</p>
       )}
@@ -285,7 +287,7 @@ const ExerciseStat = () => {
           식단 계획
         </li>
       </ul>
-      {showNutritionChart && <GptNutritionChart planData={planData} />}
+      {showNutritionChart && <GptNutritionChart show={show} planData={planData} />}
       </>
     }
     </div>

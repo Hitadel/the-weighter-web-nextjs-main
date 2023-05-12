@@ -13,6 +13,7 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
     goalWeight: "",
     training: "",
     buttonType:0,
+    dateString:"",
   });
   const [data, setData] = useState(""); // chatGPT 응답값 변수
   // const [plan, setPlan] = useState(""); // Json형태로 반환된 운동계획
@@ -26,11 +27,20 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
     setActivated(true);
     if(e.target.id === 'button1'){ // 운동 추천
       console.log("운동 추천")
-      const newRes = { ...res, buttonType: 0}
+      // 현재 날짜를 가져오기 위해 Date 객체 생성
+      const date = new Date();
+      // 날짜와 시간 정보를 가져오기
+      const year = date.getFullYear(); // 연도
+      const month = date.getMonth() + 1; // 월 (0부터 시작하므로 1을 더해줌)
+      const day = date.getDate(); // 일
+      const dayOfWeek = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"][date.getDay()];
+      // 문자열 생성
+      const dateString = `${year}.${month}.${day} ${dayOfWeek}`;
+      const newRes = { ...res, buttonType: 0, dateString}
       setRes(newRes)
+      // prompt 변수에 res값을 담아서 포스트요청(api/chat.ts로)
       axios.post("/api/chat", { prompt:newRes }).then((res) => {
-        // prompt 변수에 res값을 담아서 포스트요청(api/chat.ts로)
-        setData(res.data.response.text.replace(/^\n+/, "")); // chat.ts에서 응답받은 요청값을 data에 셋팅, 문장 맨 앞 줄바꿈 제거
+        setData(res.data.response.replace(/^\n+/, "")); // chat.ts에서 응답받은 요청값을 data에 셋팅, 문장 맨 앞 줄바꿈 제거
         setActivated(false);
       });
     }else if(e.target.id === 'button2'){ // 계획 반영
@@ -38,12 +48,7 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
       const newRes = { ...res, buttonType: 1}
       setRes(newRes)
       axios.post("/api/chat", { prompt: newRes, data: data}).then((res) => {
-        // prompt 변수에 data값을 담아서 포스트요청(api/chat.ts로)
-        // console.log("log:res.data",JSON.stringify(res.data));
-        // console.log("log:res.data.response",JSON.stringify(res.data.response.text.replace(/^\n+/, "")));
-        const planText = res.data.response.text.replace(/^\n+/, ""); // chat.ts에서 응답받은 요청값을 plan에 셋팅, 문장 맨 앞 줄바꿈 제거
-        // planText 값을 JSON.parse() 메소드를 사용하여 JSON 객체로 변환한 후, JSON.stringify() 메소드를 사용하여 다시 JSON 문자열로 변환하면, 사이 사이의 공백이 없는 JSON 문자열을 얻을 수 있다
-        const planJSON = JSON.stringify(JSON.parse(planText)); 
+        const planJSON = JSON.parse(res.data.response.replace(/^\n+/, "")); // chat.ts에서 응답받은 요청값을 plan에 셋팅, 문장 맨 앞 줄바꿈 제거
         console.log('planJSON',planJSON);
         // 위 코드에서 변환된 JSON 객체를 서버로 전송하는 부분을 추가
         request()

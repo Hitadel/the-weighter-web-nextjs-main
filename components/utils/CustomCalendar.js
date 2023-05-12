@@ -10,7 +10,7 @@ const CustomCalendar = ({ show, adjustData }) => {
     const calendarHandler = (event, show, selectedItem) => {
         const result = calendar(event, show);
         setDate(result[1]);
-        adjustData(result[0], result[1], selectedItem);
+        return adjustData(result[0], result[1]);
       };
 
     return (

@@ -4,7 +4,7 @@ import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Le
 const GptNutritionChart = ({ show = "", planData = [] }) => {
 
     return (
-        <ResponsiveContainer height={500}>
+        <ResponsiveContainer width={show === "month" ? "225%" : "100%"} height={500}>
         <BarChart
           data={planData}
           margin={{
