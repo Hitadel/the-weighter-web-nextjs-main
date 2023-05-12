@@ -77,7 +77,7 @@ const Motion = () => {
     <CommonLayout>
       {isReady && <CountScreen ready={ready} />}
       {isFull ? (
-        <div className='flex items-center justify-center w-full h-full bg-gray-200'>
+        <div className='flex items-center justify-center w-full h-screen bg-gray-200'>
           <InsideBox type={type} setNowCount={setNowCount} nowCount={nowCount} onClickStartButton={onClickStartButton} isReady={isReady} time={time} isFull={isFull} setIsFull={setIsFull} />
         </div>
       ) : (

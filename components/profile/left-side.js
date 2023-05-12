@@ -52,7 +52,7 @@ const LeftSide = ({ name, gender, email, phone }) => {
         </Link> */}
 
       <ProfilePersonalModify open={personalOpen} onClose={() => setPersonalOpen(!personalOpen)} name={name} gender={gender} email={email} />
-      <ProfilePasswordModify open={passwordOpen} onClose={() => setPasswordOpen(!passwordOpen)} />
+      <ProfilePasswordModify open={passwordOpen} onClose={() => setPasswordOpen(!passwordOpen)} email={email} />
     </div>
   );
 };

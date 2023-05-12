@@ -52,21 +52,21 @@ const ExerciseScreen = ({ type, setNowCount, isReady, time, isFull, setIsFull })
         });
       const adjacentKeyPoints = posenet.getAdjacentKeyPoints(keypoints, 0.5).map((value) => {
         if (isFull) {
-          return <Line x1={value[0].x * 2} x2={value[1].x * 2} y1={value[0].y * 2} y2={value[1].y * 2} key={value[0].name} color="white" strokeWidth={4} />;
+          return <Line x1={value[0].x * 2} x2={value[1].x * 2} y1={value[0].y * 2} y2={value[1].y * 2} key={value[0].name} color='white' strokeWidth={4} />;
         } else {
-          return <Line x1={value[0].x} x2={value[1].x} y1={value[0].y} y2={value[1].y} key={value[0].name} color="white" strokeWidth={2} />;
+          return <Line x1={value[0].x} x2={value[1].x} y1={value[0].y} y2={value[1].y} key={value[0].name} color='white' strokeWidth={2} />;
         }
       });
       if (isFull) {
         return (
-          <svg viewBox="0 0 1280 960" stroke="red" fill="white" className="absolute w-[1280px] h-full top-0 left-[16.5%]">
+          <svg viewBox='0 0 1280 960' stroke='red' fill='white' className='absolute w-[1280px] h-full top-0 left-[16.5%]'>
             {circles}
             {adjacentKeyPoints}
           </svg>
         );
       } else {
         return (
-          <svg viewBox="0 0 640 480" stroke="#06CFCB" fill="white" className="absolute w-[640px] h-[480px] top-[23%] left-[33%]">
+          <svg viewBox='0 0 640 480' stroke='#06CFCB' fill='white' className='absolute w-[640px] h-[480px] top-[23%] left-[33%]'>
             {circles}
             {adjacentKeyPoints}
           </svg>
@@ -86,15 +86,15 @@ const ExerciseScreen = ({ type, setNowCount, isReady, time, isFull, setIsFull })
   }, []);
 
   return isFull ? (
-    <div>
+    <div className='absolute top-0 left-0 w-full h-full bg-gray-800'>
       <AbsoluteArea step={step} time={time} setIsFull={setIsFull} />
-      <Webcam ref={webcamRef} className="absolute w-[1920px] h-[960px] top-0 left-0" onReady />
+      <Webcam ref={webcamRef} className='absolute top-0 left-0 w-screen h-screen' onReady />
       {/* <canvas ref={canvasRef} className="absolute w-[1280px] h-full top-0 left-[16.67%] scale-[(-1, 1)] translate-[(-200, 0)]" /> */} {drawKeypoints()}
     </div>
   ) : (
     <div>
       <AbsoluteArea step={step} time={time} />
-      <Webcam ref={webcamRef} className="absolute w-[640px] h-[480px] top-[23%] left-[33%]" />
+      <Webcam ref={webcamRef} className='flex w-[640px] h-[480px] top-[23%] left-[33%]' />
       {/* <canvas ref={canvasRef} className="absolute w-[640px] h-[480px] top-[23%] left-[33%] scale-[(-1, 1)] translate-[(-200, 0)]" /> */}
       {drawKeypoints()}
     </div>

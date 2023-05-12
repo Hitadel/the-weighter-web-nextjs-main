@@ -1,13 +1,15 @@
-const AbsoluteArea = ({ step, time }) => {
+const AbsoluteArea = ({ step, time, setIsFull }) => {
   return (
-    <div className="flex w-full h-[88vh] justify-center items-center border-b-1 flex-col bg-neutral-200 rounded-lg">
-      <div className="absolute w-1/3 h-[8%] text-3xl left-[33%] top-[12%] bg-button justify-center items-center flex-col rounded-lg text-white shadow-shadow">
-        <label className="flex w-full h-full justify-center items-center">다음 동작 : {step === 1 ? "↑" : "↓"}</label>
+    <div className='flex flex-col items-center justify-center w-full my-5 rounded-lg border-b-1'>
+      <div className={`flex flex-col items-center justify-center ${setIsFull ? "w-[30%]" : "w-full"} h-full px-10 text-3xl text-white rounded-lg bg-button shadow-shadow z-10`}>
+        <label className='flex items-center justify-center w-full h-full'>
+          다음 동작 : <span className='z-10 ml-10 text-8xl'>{step === 1 ? "↑" : "↓"}</span>
+        </label>
       </div>
-      <div className="absolute right-[11.5%] w-[200px] h-[200px] bg-black text-white rounded-full mb-5 text-7xl justify-center items-center">
-        <label className="flex w-full h-full justify-center items-center">
+      <div className={`absolute z-10 items-center justify-center ${setIsFull ? "top-[40%] right-[11%]" : "top-[8%] right-[9%]"}  w-[200px] h-[200px] mb-5 text-white bg-black rounded-full text-7xl`}>
+        <label className='flex items-center justify-center w-full h-full'>
           {time}
-          <label className="flex text-lg">초</label>
+          <label className='flex text-lg'>초</label>
         </label>
       </div>
     </div>

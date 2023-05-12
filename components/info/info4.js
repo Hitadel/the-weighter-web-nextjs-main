@@ -69,7 +69,7 @@ const Info4 = () => {
           })}
         </ul>
         {/* 우측 */}
-        <div className='relative w-full h-[80vh] lg:mt-0 mt-5 p-10 overflow-auto text-xl font-bold bg-gray-300 lg:rounded-l-none lg:rounded-r-lg rounded-lg lg:h-full dark:bg-gray-500 change'>
+        <div className='flex flex-col w-full h-[80vh] lg:mt-0 mt-5 p-10 overflow-auto text-xl font-bold bg-gray-300 lg:rounded-l-none lg:rounded-r-lg rounded-lg lg:h-full dark:bg-gray-500 change'>
           {menu ? (
             <div className='flex lg:w-[20vw] p-2 lg:p-5 items-center justify-center rounded-lg drop-shadow lg:text-3xl bg-white dark:bg-gray-400 mb-10 select-none'>{menu}</div>
           ) : (

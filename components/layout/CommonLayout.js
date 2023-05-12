@@ -11,7 +11,7 @@ const CommonLayout = ({ children }) => {
         <link rel='icon' href='/logo.ico' />
       </Head>
       <Header />
-      <div className='flex flex-col items-center justify-center min-h-screen text-black change dark:text-white bg-neutral-100 dark:bg-neutral-700'>{children}</div>
+      <div className='flex flex-col items-center justify-center min-h-screen text-black bg-gray-100 change dark:text-white dark:bg-gray-800'>{children}</div>
       <Footer />
     </div>
   );
