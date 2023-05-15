@@ -13,7 +13,7 @@ const ModifyTable = () => {
 
   const onClickSubmitButton = () => {
     if (title && category && content) {
-      request
+      request()
         .post(`${process.env.NEXT_PUBLIC_API_URL}/board/update`, { title, category, content, id })
         .then((res) => {
           if (res.data.result) {

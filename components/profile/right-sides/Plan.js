@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { request } from "../../../utils/request";
-import CustomCalendar from "../../utils/CustomCalendar";
-import ExerciseChart from "../../utils/ExerciseChart";
-import NutritionChart from "../../utils/NutritionChart";
-import GptExerciseChart from "../../utils/GptExerciseChart";
-import GptNutritionChart from "../../utils/GptNutritionChart";
-import AiExercisePlan from "../../utils/AiExercisePlan";
-import AiNutritionPlan from "../../utils/AiNutritionPlan";
+import CustomCalendar from "./utils/CustomCalendar";
+import ExerciseChart from "./utils/ExerciseChart";
+import NutritionChart from "./utils/NutritionChart";
+import GptExerciseChart from "./utils/GptExerciseChart";
+import GptNutritionChart from "./utils/GptNutritionChart";
+import AiPlan from "./utils/AiPlan";
 
 const ExerciseStat = () => {
   const [show, setShow] = useState("day");
@@ -86,7 +85,6 @@ const ExerciseStat = () => {
       }
       setChartData(chartFramework(show, result))
       setPlanData(chartFramework(show, resultGpt))
-      console.log("디버그", aiPlan);
       setListData(aiPlan);
     }
 
@@ -260,7 +258,7 @@ const ExerciseStat = () => {
     <GptExerciseChart show={show} planData={planData} />
 
     {listData.length > 0 ? (
-      <AiExercisePlan listData = {listData}/>
+      <AiPlan listData = {listData} category={category}/>
       ) : (
         <p className="text-white mt-5 text-center">현재 계획이 없습니다.</p>
       )}
@@ -286,7 +284,7 @@ const ExerciseStat = () => {
       <GptNutritionChart show={show} planData={planData} />
 
       {listData.length > 0 ? (
-      <AiNutritionPlan listData = {listData}/>
+      <AiPlan listData = {listData} category={category}/>
       ) : (
         <p className="text-white mt-5 text-center">현재 계획이 없습니다.</p>
       )}
@@ -294,8 +292,6 @@ const ExerciseStat = () => {
       </>
     }
     </div>
-    <label className='flex w-full text-gray-500 text-sm mt-1 text-center'>cho: 탄수화물 protein: 단백질 fat: 지방</label>
-    <label className='flex w-full text-gray-500 text-sm mt-1 text-center'>총 값은 칼로리로, 탄수화물(g) * 4 + 단백질(g) * 4 + 지방(g) * 9 값입니다.</label>
     </div>
   );
 };

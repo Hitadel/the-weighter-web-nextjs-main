@@ -4,6 +4,7 @@ import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Le
 const NutritionChart = ({ show = "", chartData = [] }) => {
 
     return (
+      <>
         <ResponsiveContainer width={show === "month" ? "225%" : "100%"} height={500}>
         <BarChart
           data={chartData}
@@ -55,6 +56,9 @@ const NutritionChart = ({ show = "", chartData = [] }) => {
           />
         </BarChart>
       </ResponsiveContainer>
+      <label className='flex w-full text-gray-500 text-sm mt-1 text-center'>cho: 탄수화물 protein: 단백질 fat: 지방</label>
+      <label className='flex w-full text-gray-500 text-sm mt-1 text-center'>총 값은 칼로리로, 탄수화물(g) * 4 + 단백질(g) * 4 + 지방(g) * 9 값입니다.</label>
+      </>
     )}
     
 export default NutritionChart;
