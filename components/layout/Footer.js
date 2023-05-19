@@ -5,7 +5,7 @@ const Footer = () => {
     <div className='flex flex-col lg:flex-row w-full h-full lg:h-[20vh] justify-between items-start dark:text-white select-none'>
       <div className='w-full h-full bg-gray-300 lg:w-[65%] change dark:bg-gray-500'>
         <div className='mt-5 ml-20'>
-          <div className='text-3xl'>weighter</div>
+          <div className='text-2xl bg-clip-text text-transparent bg-gradient-to-br from-[#0faff5] dark:from-[#0b80b0] dark:to-darkButton to-button w-fit h-fit'>weighter</div>
           <div className='flex flex-row mt-2 text-sm text-gray-500 lg:text-base dark:text-gray-300'>
             <Link href='/'>
               <div className='hover:text-gray-400 dark:hover:text-gray-200 hover:underline'>서비스 소개</div>
@@ -19,13 +19,14 @@ const Footer = () => {
               <div className='hover:text-gray-400 dark:hover:text-gray-200 hover:underline'>고객 지원</div>
             </Link>
           </div>
-          <div className='mt-1'>text</div>
-          <div className=''>text</div>
-          <div className='text-gray-500 select-text'>© Copyright - Weighter™</div>
+          <div className='mt-1 text-gray-400 dark:text-gray-300'>경북 칠곡군 지천면 금송로 60 영진전문대학교 글로벌 캠퍼스 5조</div>
+          {/* <div className=''>text</div> */}
+          <div className='text-gray-400 dark:text-gray-300'>☎: 010-1234-5678</div>
+          <div className='text-gray-400 select-text dark:text-gray-300'>© Copyright - Weighter™</div>
         </div>
       </div>
       <div className='flex flex-col items-end w-full h-full lg:w-[35%] bg-gradient-to-br from-[#0faff5] dark:from-[#0b80b0] dark:to-darkButton to-button change'>
-        <div className='flex items-center justify-center m-2'>hellohasjdsdk</div>
+        {/* <div className='flex items-center justify-center m-2'>w</div> */}
         <div className='flex flex-row items-center justify-end w-full m-2'>
           <span className='flex select-none'>정보 지원 : </span>
           <div className='flex flex-row w-auto h-full select-none'>

@@ -60,8 +60,8 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className='flex flex-row p-20 mx-5 mt-5 text-white bg-gray-600 rounded-lg'>
-              <div>뭘로 할 지 고민 중인가 봐요!</div>
+            <div className='flex flex-row p-20 mx-5 mt-5 text-white bg-gray-400 rounded-lg dark:bg-gray-500'>
+              <div>이 곳에는 기본적인 내용이 들어갑니다.</div>
               <div className='w-2 h-2 ml-1 bg-[red] rounded-lg animate-ping'></div>
             </div>
           </div>
