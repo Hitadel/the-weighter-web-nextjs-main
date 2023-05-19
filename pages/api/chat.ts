@@ -6,13 +6,13 @@ export default async function chat(req: NextApiRequest, res: NextApiResponse) {
   if (!flag) {
     // 식단 추천
     try {
-      const { gender, age, height, weigh, allergy, disease, buttonInput, menus } = req.body.prompt; // 구조분해 할당, chatgpt/index.js에서 보내온 prompt변수 구조분해할당 받음
+      const { gender, age, height, weight, allergy, disease, buttonInput, menus } = req.body.prompt; // 구조분해 할당, chatgpt/index.js에서 보내온 prompt변수 구조분해할당 받음
       const config = new Configuration({
         apiKey: process.env.NEXT_PUBLIC_CHAT_GPT_API_KEY,
       });
       const openai = new OpenAIApi(config);
       // if (buttonInput === "button1") {
-      let promptText = `나이 ${age}살, 키 ${height}cm, 몸무게 ${weigh}kg인 ${gender}에게 알맞은 식단과 영양소를 알려주세요.`;
+      let promptText = `나이 ${age}살, 키 ${height}cm, 몸무게 ${weight}kg인 ${gender}에게 알맞은 식단과 영양소를 알려주세요.`;
       if (allergy) {
         promptText += ` ${allergy}이(가) 없는 음식으로만 추천 부탁드립니다.`;
       }
@@ -53,38 +53,66 @@ export default async function chat(req: NextApiRequest, res: NextApiResponse) {
     }
   } else if (flag) {
     // 운동 추천
-    try {
-      const { gender, age, height, weight, goalWeight, training } = req.body.prompt;
-      const config = new Configuration({
-        apiKey: process.env.NEXT_PUBLIC_CHAT_GPT_API_KEY,
-      });
-
-      const openai = new OpenAIApi(config);
-
-      const response = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt:
-          "나이 " +
-          age +
-          "살, 키 " +
-          height +
-          "cm, 몸무게 " +
-          weight +
-          "kg, 목표 몸무게 " +
-          goalWeight +
-          "kg인 " +
-          gender +
-          "에게 " +
-          training +
-          " 중에서 적합한 운동을 골라 운동 스케줄을 만들어주세요. 대답은 1. 운동 스케줄, 2. 운동 조언으로 해주세요. 중복되는 문장은 없도록 해주세요.", // GPT 모델에 입력할 텍스트
-        temperature: 0.2,
-        max_tokens: 2048,
-        top_p: 0.2,
-      });
-      res.status(200).json({ response: response.data.choices[0] }); // HTTP 응답 상태 코드 반환(상태코드와 함께 전송), 200은 ok를 나타냄.
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: error.message });
+    const { buttonType } = req.body.prompt;
+    console.log("버튼타입:", buttonType);
+    if (!buttonType) {
+      // 운동 추천
+      console.log("운동 추천 chat.gpt");
+      try {
+        const { gender, age, height, weight, goalWeight, training } = req.body.prompt;
+        const config = new Configuration({
+          apiKey: process.env.NEXT_PUBLIC_CHAT_GPT_API_KEY,
+        });
+        const openai = new OpenAIApi(config);
+        const response = await openai.createCompletion({
+          model: "text-davinci-003",
+          prompt:
+            "나이 " +
+            age +
+            "살, 키 " +
+            height +
+            "cm, 몸무게 " +
+            weight +
+            "kg, 목표 몸무게 " +
+            goalWeight +
+            "kg인 " +
+            gender +
+            "에게 " +
+            training +
+            " 중에서 적합한 운동을 골라 운동 스케줄을 만들어주세요. 대답은 운동 스케줄만 해주세요.", // GPT 모델에 입력할 텍스트
+          temperature: 0.2,
+          max_tokens: 2048,
+          top_p: 0.2,
+        });
+        res.status(200).json({ response: response.data.choices[0] }); // HTTP 응답 상태 코드 반환(상태코드와 함께 전송), 200은 ok를 나타냄.
+      } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: error.message });
+      }
+    } else if (buttonType) {
+      // 추천된 운동을 계획에 반영.
+      console.log("계획 반영 chat.gpt");
+      try {
+        const { data } = req.body;
+        // console.log(data); data오는거 확인
+        const config = new Configuration({
+          apiKey: process.env.NEXT_PUBLIC_CHAT_GPT_API_KEY,
+        });
+        const openai = new OpenAIApi(config);
+        const response = await openai.createCompletion({
+          model: "text-davinci-003",
+          prompt:
+            data +
+            "이 문장에서 운동스케줄을 MySQL에 입력하려 합니다. Json형태로 가공해주세요. 키값은 날짜(date), 운동명(exercise), 횟수(count), 셋트수(set)로 나뉘게 해주세요. 날짜의 경우 월요일을 0, 일요일을 6으로 해서 나타내주세요.",
+          temperature: 0.2,
+          max_tokens: 2048,
+          top_p: 0.2,
+        });
+        res.status(200).json({ response: response.data.choices[0] }); // HTTP 응답 상태 코드 반환(상태코드와 함께 전송), 200은 ok를 나타냄.
+      } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: error.message });
+      }
     }
   }
 }
