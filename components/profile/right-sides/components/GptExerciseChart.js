@@ -4,7 +4,9 @@ import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Le
 const GptExerciseChart = ({ show = "", planData = [] }) => {
 
     return (
-      <ResponsiveContainer width={show === "month" ? "225%" : "100%"} height={500}>
+      <div className="flex flex-col w-[50%]">
+      <label className='flex w-full text-gray-500 text-sm mt-1 text-center'>AI 운동 계획</label>
+      <ResponsiveContainer width="100%" height={500}>
       <BarChart
         data={planData}
         margin={{
@@ -47,6 +49,7 @@ const GptExerciseChart = ({ show = "", planData = [] }) => {
         />
       </BarChart>
     </ResponsiveContainer>
+    </div>
     )}
     
 export default GptExerciseChart;

@@ -1,13 +1,14 @@
 import React from "react";
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts";
 
-const NutritionChart = ({ show = "", chartData = [] }) => {
+const GptNutritionChart = ({ show = "", planData = [] }) => {
 
     return (
-      <>
-        <ResponsiveContainer width={show === "month" ? "225%" : "100%"} height={500}>
+      <div className="flex flex-col w-[50%]">
+      <label className='flex w-full text-gray-500 text-sm mt-1 text-center'>AI 식단 계획</label>
+        <ResponsiveContainer width="100%" height={500}>
         <BarChart
-          data={chartData}
+          data={planData}
           margin={{
             top: 20,
             right: 30,
@@ -20,7 +21,7 @@ const NutritionChart = ({ show = "", chartData = [] }) => {
           <YAxis />
           <Tooltip
             labelFormatter={(label) => {
-              const data = chartData.find((item) => item.name === label);
+              const data = planData.find((item) => item.name === label);
               if (data) {
                 const date = new Date(data.createdAt);
                 let formattedDate;
@@ -56,9 +57,7 @@ const NutritionChart = ({ show = "", chartData = [] }) => {
           />
         </BarChart>
       </ResponsiveContainer>
-      <label className='flex w-full text-gray-500 text-sm mt-1 text-center'>cho: 탄수화물 protein: 단백질 fat: 지방</label>
-      <label className='flex w-full text-gray-500 text-sm mt-1 text-center'>총 값은 칼로리로, 탄수화물(g) * 4 + 단백질(g) * 4 + 지방(g) * 9 값입니다.</label>
-      </>
+      </div>
     )}
     
-export default NutritionChart;
+export default GptNutritionChart;

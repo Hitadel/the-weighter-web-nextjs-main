@@ -4,7 +4,9 @@ import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Le
 const ExerciseChart = ({ show = "", chartData = [] }) => {
 
     return (
-        <ResponsiveContainer width={show === "month" ? "225%" : "100%"} height={500}>
+      <div className="flex flex-col w-[50%]">
+      <label className='flex w-full text-gray-500 text-sm mt-1 text-center'>운동 기록</label>
+        <ResponsiveContainer width="100%" height={500}>
           <BarChart
             data={chartData}
             margin={{
@@ -47,6 +49,7 @@ const ExerciseChart = ({ show = "", chartData = [] }) => {
             />
           </BarChart>
         </ResponsiveContainer>
+        </div>
     )}
     
 export default ExerciseChart;
