@@ -1,11 +1,12 @@
+import { request } from "../../utils/request";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { parseData } from "./parseData";
 
 const Recommend = ({ gender, age, height, weight, disease, allergy }) => {
   const [activated, setActivated] = useState(false); // 로딩 버튼
   const [res, setRes] = useState({
     flag: 0,
-    // buttonInput: "",
     menus: "",
     gender,
     age,
@@ -15,7 +16,6 @@ const Recommend = ({ gender, age, height, weight, disease, allergy }) => {
     allergy,
     buttonType: 0,
     dateString: "",
-    //...{ gender, age, height, weight, disease, allergy },
   });
 
   useEffect(() => {
@@ -27,57 +27,51 @@ const Recommend = ({ gender, age, height, weight, disease, allergy }) => {
       weight,
       disease,
       allergy,
-      // gender: gender,
-      // age: age,
-      // height: height,
-      // weight: weight,
-      // disease: disease,
-      // allergy: allergy,
     }));
   }, [gender, age, height, weight, disease, allergy]); // 성별, 스테이터스가 props로 넘어올때마다(props.gender가 변동 있을때 마다)
 
-  // useEffect(() => {
-  //    console.log('res.menus:',res.menus);
-  //   }),[res.menus]
-
-  // useEffect(() => {
-  //   console.log('res.buttonInput:',res.buttonInput);
-  //   }),[res.buttonInput]
-
   const [data, setData] = useState(""); // 식단 추천받은 값이 담김
-  const [recipe, setRecipe] = useState(""); // 추천받은 식단의 레시피가 담김
-  const onClickSubmitButton = (e) => {
-    // 입력버튼 누르면
-    console.log("입력버튼 누름");
+  const onClickSubmitButton = async (e) => {
+    e.preventDefault();
     setActivated(true);
-    // setRes((prevState) => ({ ...prevState, buttonInput: e.target.id }));
+    // 현재 날짜를 가져오기 위해 Date 객체 생성
+    const date = new Date();
+    // 날짜와 시간 정보를 가져오기
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const dayOfWeek = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"][date.getDay()];
+    const dateString = `${year}.${month}.${day} ${dayOfWeek}`;
+    const buttonType = e.target.id === "button1" ? 0 : 1;
+    const newRes = { ...res, buttonType, dateString };
+    setRes(newRes);
     if (e.target.id === "button1") {
-      axios.post("/api/chat", { prompt: res }).then((res) => {
-        // prompt 변수에 res값을 담아서 포스트요청(api/chat.ts로) / then에서 응답 받은 값을(res)파라미터에 할당
-        console.log("첫 axios요청됨", res.data);
-        const responseStr = res.data.response.text.replace(/^\n+/, "");
-        let menuList = responseStr
-          .split(/\n+/) // 개행 문자열을 기준으로 문자열을 분리하여 배열 생성
-          .filter((line) => line.includes("식단 : ")) // '식단 : '을 포함하는 요소들만 필터링
-          .map((line) => line.split("식단 : ")[1]) // '식단 : ' 다음 문자열만 추출하여 새로운 배열 생성
-          .flatMap((menu) => menu.split(", ")); // 각 요소들을 쉼표와 공백으로 분리하여 배열을 평탄화
-        // console.log("menuList:",menuList);
-        setRes((prevRes) => ({
-          ...prevRes,
-          menus: menuList.join(", "), // menuList의 모든 요소를 ,로 구분된 하나의 문자열로 합침
-        }));
-        setData(responseStr); // chat.ts에서 응답받은 요청값을 data에 셋팅
-        setActivated(false);
-      });
+      // 추천 버튼 클릭시
+      const response = await axios.post("/api/chat", { prompt: newRes });
+      setData(response.data.response.replace(/^\n+/, ""));
+    } else if (e.target.id === "button2") {
+      const dateString = `${year}-${month}-${day}`;
+      try {
+        const response = await request().post("/planner/planCheck", { date: dateString, partition: "nutrition" });
+        if (response.data.confirm === true) {
+          console.log("계획 반영");
+          try {
+            const jsonData = parseData(data);
+            await request().post("/planner/nutrition", { plan: jsonData });
+            console.log("NutritionPlan sent to server");
+            setActivated(false);
+          } catch (err) {
+            console.log(err);
+          }
+        } else if (response.data.confirm === false) {
+          alert("해당 날짜에 이미 계획이 있습니다.");
+          setActivated(false);
+        }
+      } catch (err) {
+        console.error(err);
+      }
     }
-    // else if (e.target.id === "button2") {
-    //   setRes((prevState) => ({ ...prevState, buttonInput: e.target.id }));
-    //   axios.post("/api/chat", { prompt: res }).then((res) => {
-    //     // prompt 변수에 res값을 담아서 포스트요청(api/chat.ts로) / then에서 응답 받은 값을(res)파라미터에 할당
-    //     // console.log("전송값 확인:",res.config.data);
-    //     setRecipe(res.data.response.text.replace(/^\n+/, ""));
-    //   });
-    // }
+    setActivated(false);
   };
 
   const handleChange = (e) => {
@@ -88,8 +82,8 @@ const Recommend = ({ gender, age, height, weight, disease, allergy }) => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center w-[90%] my-10 lg:my-0 lg:flex-row'>
-      <div className='flex flex-col items-center justify-center p-10 bg-gray-200 rounded-lg shadow-md lg:mx-20 dark:bg-gray-500 change'>
+    <div className='flex flex-col items-center justify-center w-full lg:w-[80%] my-10 lg:my-0 lg:flex-row bg-white dark:bg-[#1f2023] h-screen dark:border-x-[#2d2f34] border-[#ccc] border-y-0 border-[1px]'>
+      <div className='flex flex-col items-center justify-center p-10 bg-gray-100 rounded-lg shadow-md lg:mx-10 dark:bg-[#383b40] change'>
         <div className='flex justify-center mb-2'>
           <div className='mr-2'>
             <label className='flex items-center'>
@@ -105,62 +99,62 @@ const Recommend = ({ gender, age, height, weight, disease, allergy }) => {
           </div>
         </div>
         <div className='flex flex-row mb-2'>
-          <label htmlFor='age' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-400 rounded-l-lg '>
+          <label htmlFor='age' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-200 dark:bg-[#1f2023]  rounded-l-lg '>
             나이
           </label>
           <input
             type='text'
             name='age'
             value={res.age}
-            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-400 rounded-r-lg appearance-none dark:bg-gray-700 focus:outline-none focus:bg-white focus:border-blue-500'
+            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-200 dark:bg-[#1f2023] rounded-r-lg appearance-none dark:bg-[#1f2023] focus:outline-none focus:bg-white focus:border-blue-500'
             onChange={handleChange}
           />
         </div>
         <div className='flex flex-row mb-2'>
-          <label htmlFor='height' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-400 rounded-l-lg '>
+          <label htmlFor='height' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-200 dark:bg-[#1f2023] rounded-l-lg '>
             키
           </label>
           <input
             type='text'
             name='height'
             value={res.height}
-            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-400 rounded-r-lg appearance-none dark:bg-gray-700 focus:outline-none focus:bg-white focus:border-blue-500'
+            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-200 dark:bg-[#1f2023] rounded-r-lg appearance-none dark:bg-[#1f2023] focus:outline-none focus:bg-white focus:border-blue-500'
             onChange={handleChange}
           />
         </div>
         <div className='flex flex-row mb-2'>
-          <label htmlFor='weight' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-400 rounded-l-lg '>
+          <label htmlFor='weight' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-200 dark:bg-[#1f2023] rounded-l-lg '>
             체중(kg)
           </label>
           <input
             type='text'
             name='weight'
             value={res.weight}
-            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-400 rounded-r-lg appearance-none dark:bg-gray-700 focus:outline-none focus:bg-white focus:border-blue-500'
+            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-200 dark:bg-[#1f2023] rounded-r-lg appearance-none dark:bg-[#1f2023] focus:outline-none focus:bg-white focus:border-blue-500'
             onChange={handleChange}
           />
         </div>
         <div className='flex flex-row mb-2'>
-          <label htmlFor='disease' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-400 rounded-l-lg '>
+          <label htmlFor='disease' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-200 dark:bg-[#1f2023] rounded-l-lg '>
             질병, 질환
           </label>
           <input
             type='text'
             name='disease'
             value={res.disease || ""}
-            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-400 rounded-r-lg appearance-none dark:bg-gray-700 focus:outline-none focus:bg-white focus:border-blue-500'
+            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-200 dark:bg-[#1f2023] rounded-r-lg appearance-none dark:bg-[#1f2023] focus:outline-none focus:bg-white focus:border-blue-500'
             onChange={handleChange}
           />
         </div>
         <div className='flex flex-row mb-2'>
-          <label htmlFor='allergy' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-400 rounded-l-lg '>
+          <label htmlFor='allergy' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-200 dark:bg-[#1f2023] rounded-l-lg '>
             알레르기
           </label>
           <input
             type='text'
             name='allergy'
             value={res.allergy || ""}
-            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-400 rounded-r-lg appearance-none dark:bg-gray-700 focus:outline-none focus:bg-white focus:border-blue-500'
+            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-200 dark:bg-[#1f2023] rounded-r-lg appearance-none dark:bg-[#1f2023] focus:outline-none focus:bg-white focus:border-blue-500'
             onChange={handleChange}
           />
         </div>
@@ -192,7 +186,7 @@ const Recommend = ({ gender, age, height, weight, disease, allergy }) => {
           입력
         </button>
       </div>
-      <div className='flex w-full min-h-[100px] p-10 mt-5 text-lg bg-white dark:bg-gray-700 border-gray-400 dark:border-gray-400 border-2 whitespace-pre-line rounded-lg overflow-auto change'>
+      <div className='flex w-[90%] lg:w-full min-h-[200px] lg:min-h-[600px] p-20 mt-5 bg-white dark:bg-black mr-5 border-gray-200 dark:border-gray-600 border-2 whitespace-pre-line rounded-lg overflow-auto change'>
         <label className='flex w-full h-full'>{data && data}</label>
       </div>
       <div>

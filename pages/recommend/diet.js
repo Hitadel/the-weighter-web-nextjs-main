@@ -1,4 +1,3 @@
-// 식단추천 부모페이지
 import { useState, useEffect } from "react";
 import RecommendLayout from "../../components/recommend/diet-recommend"; // 식단추천 레이아웃
 import { request } from "../../utils/request";

@@ -39,7 +39,7 @@ const RightSide = () => {
 
   const onClickSubmitButton = async () => {
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login/post`, { id: email, pw: password }, { withCredentials: true });
+      const res = await axios.post("/login/post", { id: email, pw: password }, { withCredentials: true });
       const token = {
         value: res.data.data,
         expire: Date.now() + 3600000,
@@ -52,7 +52,7 @@ const RightSide = () => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center w-full lg:w-[45%] h-[80vh] dark:bg-neutral-700 bg-neutral-200 rounded-b-3xl lg:rounded-bl-none lg:rounded-r-3xl change'>
+    <div className='flex flex-col items-center justify-center w-full lg:w-[45%] h-[80vh] dark:bg-neutral-700 bg-[#efefef] rounded-b-3xl lg:rounded-bl-none lg:rounded-r-3xl drop-shadow-lg change'>
       <label className='flex mb-10 text-4xl font-bold'>로그인</label>
       <input className='flex w-4/5 h-12 border-gray-400 border-[1px] rounded-lg px-3' placeholder='이메일' type='email' onChange={(e) => setEmail(e.target.value)} />
       <input

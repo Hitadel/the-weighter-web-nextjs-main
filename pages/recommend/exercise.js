@@ -1,4 +1,3 @@
-// 운동추천 부모 페이지
 import { useState, useEffect } from "react";
 import RecommendLayout from "../../components/recommend/exercise-recommend"; // 운동추천 레이아웃
 import { request } from "../../utils/request";

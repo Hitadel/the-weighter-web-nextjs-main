@@ -1,38 +1,47 @@
 // import axios from "axios";
+// import cookies from "next-cookies";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import title from "../../public/title.png";
-import Dropdown from "./Dropdown";
-// import cookies from "next-cookies";
+import title from "../../public/title2.png";
+import darkTitle from "../../public/title_gray.png";
+// import Dropdown from "./Dropdown";
 import ProfileDropdown from "./ProfileDropdown";
+import NutritionDropdown from "./NutritionDropdown";
 import { getItemWithExpireTime } from "../../utils/request";
 import DarkMode from "../../utils/DarkMode";
-import NutritionDropdown from "./NutritionDropdown";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [isVisible, setVisible] = useState(false);
-  const [ScrollY, setScrollY] = useState(0);
-  const [ScrollActive, setScrollActive] = useState(false);
-  function handleScroll() {
-    if (ScrollY > 149) {
-      setScrollY(window.pageYOffset);
-      setScrollActive(true);
-    } else {
-      setScrollY(window.pageYOffset);
-      setScrollActive(false);
-    }
-  }
+  // const [ScrollY, setScrollY] = useState(0);
+  // const [ScrollActive, setScrollActive] = useState(false);
+  const { theme, setTheme } = useTheme("");
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
-    function scrollListener() {
-      window.addEventListener("scroll", handleScroll);
-    }
-    scrollListener();
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
+    setLoaded(true);
+  }, [setLoaded]);
+
+  // function handleScroll() {
+  //   if (ScrollY > 149) {
+  //     setScrollY(window.pageYOffset);
+  //     setScrollActive(true);
+  //   } else {
+  //     setScrollY(window.pageYOffset);
+  //     setScrollActive(false);
+  //   }
+  // }
+  // useEffect(() => {
+  //   function scrollListener() {
+  //     window.addEventListener("scroll", handleScroll);
+  //   }
+  //   scrollListener();
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // });
 
   const onClick = () => {
     setVisible(!isVisible);
@@ -46,27 +55,24 @@ const Header = () => {
 
   return (
     <>
-      {!ScrollActive ? <></> : <div className='h-[60px]'></div>}
-      <nav className={`${ScrollActive ? "fixed left-0 -top-10 translate-y-10 " : "translate-y-0"} z-50 w-full px-4 lg:px-6 py-2.5 bg-white dark:bg-gray-800 text-gray-700 select-none change`}>
-        <div className='flex flex-wrap items-center justify-between max-w-screen-xl mx-auto '>
-          <Link href='/'>
-            <Image src={title} className='w-auto h-10' alt='title' />
+      <div className='h-[60px]'></div>
+      <nav className='fixed left-0 -top-10 translate-y-10  z-50 w-full px-4 lg:px-6 py-2.5 bg-white dark:bg-[#2d2f34] text-[#373A3C] dark:text-[#DDDDDD] select-none change drop-shadow'>
+        <div className='flex flex-wrap items-center justify-between max-w-screen-xl mx-auto'>
+          <Link href='/' alt='title'>
+            {loaded ? <Image src={theme == "dark" ? darkTitle : title} className='w-auto h-10 ' alt='title' /> : <></>}
           </Link>
 
           <div className='flex items-center lg:order-2 '>
             {isLogged ? (
               <ProfileDropdown />
             ) : (
-              <Link
-                href='/auth/login'
-                className='text-gray-700 dark:text-white hover:bg-gray-100 lg:hover:bg-gray-200 focus:ring-2 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800'
-              >
+              <Link href='/auth/login' className=' hover:bg-gray-100 lg:hover:bg-gray-200 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-[#373a3c]'>
                 로그인
               </Link>
             )}
             <button
               type='button'
-              className='inline-flex items-center p-2 ml-1 text-gray-500 rounded-lg lg:hidden dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600'
+              className='inline-flex items-center p-2 ml-1  rounded-lg lg:hidden hover:bg-gray-100 dark:hover:bg-[#373a3c] focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600'
               onClick={onClick}
             >
               <svg className={`${isVisible ? "hidden" : ""} w-6 h-6`} fill='currentColor' viewBox='0 0 20 20' xmlns='http:www.w3.org/2000/svg'>
@@ -91,7 +97,7 @@ const Header = () => {
               <li>
                 <Link
                   href='/info'
-                  className='block px-3 py-2 text-gray-700 border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 dark:text-white hover:text-gray-400 dark:hover:text-gray-300 hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-gray-700 lg:dark:hover:bg-gray-700 lg:border-0 '
+                  className='block px-3 py-2  border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600   hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-[#373a3c] lg:dark:hover:bg-[#373a3c] lg:border-0 '
                 >
                   서비스 소개
                 </Link>
@@ -99,7 +105,7 @@ const Header = () => {
               <li>
                 <Link
                   href='/information'
-                  className='block px-3 py-2 text-gray-700 border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 dark:text-white hover:text-gray-400 dark:hover:text-gray-300 hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-gray-700 lg:dark:hover:bg-gray-700 lg:border-0'
+                  className='block px-3 py-2  border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600   hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-[#373a3c] lg:dark:hover:bg-[#373a3c] lg:border-0'
                 >
                   기준표
                 </Link>
@@ -107,13 +113,13 @@ const Header = () => {
               <li>
                 <NutritionDropdown />
               </li>
-              <li>
-                <Dropdown />
-              </li>
+              {/* <li>
+                <Dropdown /> 
+              </li> */}
               <li>
                 <Link
                   href='/recommend/diet'
-                  className='block px-3 py-2 text-gray-700 border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 dark:text-white hover:text-gray-400 dark:hover:text-gray-300 hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-gray-700 lg:dark:hover:bg-gray-700 lg:border-0'
+                  className='block px-3 py-2  border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600   hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-[#373a3c] lg:dark:hover:bg-[#373a3c] lg:border-0'
                 >
                   식단 추천
                 </Link>
@@ -121,19 +127,19 @@ const Header = () => {
               <li>
                 <Link
                   href='/recommend/exercise'
-                  className='block px-3 py-2 text-gray-700 border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 dark:text-white hover:text-gray-400 dark:hover:text-gray-300 hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-gray-700 lg:dark:hover:bg-gray-700 lg:border-0'
+                  className='block px-3 py-2  border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600   hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-[#373a3c] lg:dark:hover:bg-[#373a3c] lg:border-0'
                 >
                   운동 추천
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href='/board'
-                  className='block px-3 py-2 text-gray-700 border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 dark:text-white hover:text-gray-400 dark:hover:text-gray-300 hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-gray-700 lg:dark:hover:bg-gray-700 lg:border-0'
+                  className='block px-3 py-2  border-b border-gray-200 lg:px-3 lg:py-2 lg:rounded dark:border-gray-600 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600   hover:underline hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-[#373a3c] lg:dark:hover:bg-[#373a3c] lg:border-0'
                 >
                   고객 지원
                 </Link>
-              </li>
+              </li> */}
             </ul>
             <div className={`${isVisible ? "" : "hidden"} flex items-center justify-end mt-2 lg:mt-0 lg:ml-10 lg:block lg:order-3`}>
               <DarkMode />

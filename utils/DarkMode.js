@@ -1,10 +1,11 @@
 import { useTheme } from "next-themes";
 
 const DarkMode = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme("light");
+
   return (
     <button
-      className='p-2 mx-2 text-sm font-medium text-gray-800 rounded-lg change dark:text-white hover:bg-gray-100 lg:hover:bg-gray-200 lg:px-2 lg:py-2 dark:hover:bg-gray-700 '
+      className='p-2 mx-2 text-sm font-medium text-gray-800 rounded-lg change dark:text-white hover:bg-gray-100 lg:hover:bg-gray-200 lg:px-2 lg:py-2 dark:hover:bg-[#373a3c] '
       onClick={() => (theme == "dark" ? setTheme("light") : setTheme("dark"))}
     >
       <svg className='w-6 h-6' fill='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' strokeWidth='1.5' stroke='currentColor'>
