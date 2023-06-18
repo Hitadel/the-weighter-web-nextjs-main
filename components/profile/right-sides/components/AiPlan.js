@@ -86,21 +86,21 @@ const aiPlan = ({listData = [], category = ""}) => {
                    onChange={() => handleCheckboxChange(index)}
                  />
                 <div className="ml-4">
-                  <span className='font-bold block text-blue-500'>
+                  <span className='block font-bold text-blue-500'>
                     {item.createdAt}
                   </span>
-                  <span className="font-bold block text-green-500">
+                  <span className="block font-bold text-green-500">
                     {category === "nutrition" ? item.name : item.type}
                   </span>
                   {category == "nutrition" ?
                   <>
-                  <span className="text-gray-500 block">칼로리: {item.calorie}</span>
-                  <span className="text-gray-500 block">탄수화물: {item.cho}</span>
-                  <span className="text-gray-500 block">단백질: {item.protein}</span>
-                  <span className="text-gray-500 block">지방: {item.fat}</span>
+                  <span className="block text-gray-500">칼로리: {item.calorie}</span>
+                  <span className="block text-gray-500">탄수화물: {item.cho}</span>
+                  <span className="block text-gray-500">단백질: {item.protein}</span>
+                  <span className="block text-gray-500">지방: {item.fat}</span>
                   </>
                 :
-                <span className="text-gray-500 block">횟수: {item.count}</span>
+                <span className="block text-gray-500">횟수: {item.count}</span>
                 }
                 </div>
                </li>
