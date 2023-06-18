@@ -10,10 +10,10 @@ const ProfileStatusModify = ({ open, onClose, age, height, weight, disease, alle
   const [weightValue, setWeightValue] = useState(weight);
   const [diseaseValue, setDiseaseValue] = useState(disease);
   const [allergyValue, setAllergyValue] = useState(allergy);
-  //ProfileStatusModify 자체는 부모 컴포넌트에서 정의하자마자 바로 실행됨 (next.js는 모든 페이지를 사전 렌더링함)
-  //-> age 등등의 프로퍼티는 서버에서 받아오기 전에도 받아옴 (즉, 비어있음)
-  //프로퍼티는 이 창이 열릴 때 다시 한 번 더 받아오는 듯함. 그 때 ProfileStatusModify 함수가 다시 실행되지는 않고 프로퍼티를 부여만 하는 것 같음
-  //useState는 ProfileStatusModify가 실행될 때 딱 한 번만 실행되는 듯 함. 즉, useState로 지정은 해뒀지만 서버에서 받기도 전에 할당되는 지라 이걸로 할당되지 않음
+  // ProfileStatusModify自体は親コンポーネントで定義するとすぐに実行される (next.jsはすべてのページを事前レンダリングする)
+  // -> ageなどのプロパティはサーバーから取得する前でも取得される（つまり、空である）
+  // プロパティはこのウィンドウが開いたときにもう一度取得されるようです。その時にProfileStatusModify関数が再実行されるわけではなく、プロパティを付与するだけのようです。
+  // useStateはProfileStatusModifyが実行される時に一度だけ実行されるようです。つまり、useStateで指定はしたけど、サーバーから受け取る前に割り当てられるので、これで割り当てられない
 
   const onClickSubmitButton = () => {
     request()
@@ -29,15 +29,15 @@ const ProfileStatusModify = ({ open, onClose, age, height, weight, disease, alle
   };
 
   useEffect(() => {
-    //반대로, useEffect는 이 함수가 실행될 때도, 이 창이 열릴 때도 실행이 되는 듯함. 여기서 선언하면 값이 저장됨
-    // console.log(age, height, weight, disease, allergy, "ㄴㄴ")
-    // console.log(ageValue, heightValue, weightValue, diseaseValue, allergyValue, "ㅇㅇ"); // 이 함수를 실행하면 모두 받아오기 전의 기본값만 나옴
+    // 逆に、useEffect はこの関数が実行されるときも、このウィンドウが開くときも実行されるようだ。 ここで宣言すると値が保存される
+    // // console.log(age, height, weight, disease, allergy, "ㄴㄴ")
+    // console.log(ageValue, heightValue, weightValue, diseaseValue, allergyValue, "ㅇㅇ"); // この関数を実行すると、すべて受け取る前のデフォルト値だけが表示されます
     setAgeValue(age);
     setHeightValue(height);
     setWeightValue(weight);
     setDiseaseValue(disease);
     setAllergyValue(allergy);
-    // console.log(ageValue, heightValue, weightValue, diseaseValue, allergyValue, "ㅇㅇ3"); // 이 함수를 실행하면 모두 받아오기 전의 기본값만 나옴
+    // console.log(ageValue, heightValue, weightValue, diseaseValue, allergyValue, "ㅇㅇ3"); // この関数を実行すると、すべて取得する前のデフォルト値しか出ません
   }, [age, height, weight, disease, allergy]);
 
   return (

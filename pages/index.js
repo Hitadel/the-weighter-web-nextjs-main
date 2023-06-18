@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <CommonLayout>
       <Banner />
-      <div className='flex flex-col items-center justify-center lg:w-[80%] bg-white dark:bg-gray-600 select-none'>
+      <div className='flex flex-col items-center justify-center lg:w-[80%] bg-white dark:bg-[#1f2023] dark:border-x-[#2d2f34] border-[#ccc] border-y-0 border-[1px] select-none change'>
         <div className='mt-10 mb-5'>
           <span className='text-xl select-none'>
             Weighter의 <span className='text-4xl text-button'>주요 기능</span>들을 확인해보세요.

@@ -1,6 +1,5 @@
-// 식단추천 부모페이지
 import { useState, useEffect } from "react";
-import RecommendLayout from "../../components/recommend/diet-recommend"; // 식단추천 레이아웃
+import RecommendLayout from "../../components/recommend/diet-recommend"; // 食事のおすすめレイアウト
 import { request } from "../../utils/request";
 import CommonLayout from "../../components/layout/CommonLayout";
 

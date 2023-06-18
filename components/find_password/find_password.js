@@ -5,7 +5,7 @@ import EmailAuth from "../modal/EmailAuth";
 const FindPassword = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [isConfirmEmail, setIsConfirmEmail] = useState(false); // 이메일 존재 확인
+  const [isConfirmEmail, setIsConfirmEmail] = useState(false); // メールの存在確認
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
   const [isSendEmail, setIsSendEmail] = useState(false);
@@ -15,9 +15,9 @@ const FindPassword = (props) => {
     const reg = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     if (email.match(reg)) {
       axios
-        .post("/signup/emailCheck/", { email }) // ※ signup -> find_password로 바꾸는 것이 바람직함
+        .post("/signup/emailCheck/", { email }) // ※ signup -> find_passwordに切り替えることが望ましい
         .then((res) => {
-          console.log(res.data.result); // false = 있는 이메일, true = 없는 이메일
+          console.log(res.data.result); // false = 存在するメール, true = 存在しないメール
           if (res.data.result === false) {
             setIsConfirmEmail(true);
           } else {

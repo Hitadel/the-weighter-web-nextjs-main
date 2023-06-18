@@ -22,7 +22,7 @@ const RightSide = ({ canvasRef, predictions, foods, setFoods }) => {
   };
 
   const onClickDetail = async (image) => {
-    const tensor = tf.browser.fromPixels(image); // image를 인식 가능한 tensor로 변환 후 3dTensor를 4dTensor로 확장
+    const tensor = tf.browser.fromPixels(image); // imageを認識可能なtensorに変換した後、3dTensorを4dTensorに拡張
     const nomalizedTensor = tensor.div(255).expandDims(0);
     const resizedTensor = nomalizedTensor.resizeBilinear([604, 456]);
     const predictions = model.predict(resizedTensor);

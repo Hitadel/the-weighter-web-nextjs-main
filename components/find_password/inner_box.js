@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 
 import Image from "next/image";
 import leftImage from "../../public/leftImage.png";
-import FindPassword from "./find_password"; // 비밀번호 찾기
-import FoundPassword from "./found_password"; // 비밀번호 재등록
+import FindPassword from "./find_password"; // パスワードを検索
+import FoundPassword from "./found_password"; // パスワードを再登録
 
 const InnerBox = () => {
-  const [correct, setCorrect] = useState(false); // true 시 재등록 페이지
-  const [email, setEmail] = useState(""); // 비밀번호 찾기에서 추가
+  const [correct, setCorrect] = useState(false); // true時の再登録ページ
+  const [email, setEmail] = useState(""); // パスワード検索から追加
 
   const getData = (param) => {
     setCorrect(true);

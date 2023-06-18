@@ -17,27 +17,27 @@ export const infoRequest = axios.create({
 });
 
 function getItemWithExpireTime(keyName) {
-  // localStorage 값 읽기 (문자열)
+  // localStorage値の読み取り(文字列)
   const objString = window.localStorage.getItem(keyName);
 
-  // null 체크
+  // nullチェック
   if (!objString) {
     return null;
   }
 
-  // 문자열을 객체로 변환
+  // 文字列をオブジェクトに変換
   const obj = JSON.parse(objString);
 
-  // 현재 시간과 localStorage의 expire 시간 비교
+  // 現在時刻とlocalStorageのexpire時間比較
   if (Date.now() > obj.expire) {
-    // 만료시간이 지난 item 삭제
+    // 有効期限が過ぎたitemを削除
     window.localStorage.removeItem(keyName);
 
-    // null 리턴
+    // nullリターン
     return null;
   }
 
-  // 만료기간이 남아있는 경우, value 값 리턴
+  // 有効期限が残っている場合、value値をリターン
   return obj.value;
 }
 

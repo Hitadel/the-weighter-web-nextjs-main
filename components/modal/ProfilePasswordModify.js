@@ -18,17 +18,17 @@ const ProfilePasswordModify = ({ open, onClose, email }) => {
 
   const onClickSubmitButton = () => {
     if (isConfirmPassword && isConfirmPattern && isCurrentPassword) {
-      // 변경 패스워드 일치시
+      // 変更のパスワードが一致した時
       if (currentPassword === password) return alert("현재 비밀번호에서 변경점이 없습니다.");
       request()
-        .post("/found_password/post", { password, email }) // 비밀번호 변경시 입력한 패스워드 백으로 전달, 이메일?
+        .post("/found_password/post", { password, email }) // パスワード変更時に入力したパスワードとメールをバックに転送する
         .then((res) => console.log(res.data))
         .catch((err) => console.error(err));
       alert("변경되었습니다.");
       onClose();
       return (window.location.href = "/profile");
     } else {
-      // 불일치
+      // 不一致
       return alert("정보를 다시 확인해 주세요.");
     }
   };

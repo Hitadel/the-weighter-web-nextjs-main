@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js, ts, jsx, tsx}", "./components/**/*.{js, ts, jsx, tsx}"],
-  darkMode: "class", // default:media, Used for Toggle buttons
+  darkMode: "class", // デフォルト:media、classにすると、トグルボタンに使用します。
   theme: {
     extend: {
       colors: {

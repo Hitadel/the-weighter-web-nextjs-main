@@ -12,16 +12,16 @@ const FoundPassword = (props) => {
 
   const onClickSubmitButton = () => {
     if (isConfirmPassword && isConfirmPattern) {
-      // 변경 패스워드 일치시
+      // 変更したパスワードが一致した場合
       axios
-        .post("/found_password/post", { password, email }) // 비밀번호 변경시 입력한 패스워드 백으로 전달, 이메일?
+        .post("/found_password/post", { password, email }) //パスワード変更時に入力したパスワードバックに転送
         .then((res) => console.log(res.data))
         .catch((err) => console.error(err));
       alert("변경되었습니다.");
 
-      return router.push("/auth/login"); // 로그인 화면 이동
+      return router.push("/auth/login"); // ログイン画面に移動
     } else {
-      // 불일치
+      // 不一致
       alert("정보를 다시 확인해 주세요.");
     }
   };

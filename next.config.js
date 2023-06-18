@@ -15,6 +15,10 @@ const nextConfig = {
       },
       {
         source: "/:path*",
+        destination: `${process.env.NEXT_PUBLIC_API_IP}/:path*`,
+      },
+      {
+        source: "/:path*",
         destination: `${process.env.NEXT_PUBLIC_PRODUCT_URL}/:path*`,
       },
       {

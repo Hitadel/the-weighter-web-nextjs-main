@@ -1,13 +1,12 @@
-// 운동추천 자식 컴포넌트
 import { request } from "../../utils/request";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-// props.gender 구조분해할당
+// props.gender 分割代入
 const TrainingRecommend = ({ gender, age, height, weight }) => {
-  const [activated, setActivated] = useState(false); // 로딩 버튼
+  const [activated, setActivated] = useState(false); // ローディングボタン
   const [res, setRes] = useState({
-    // 입력값 변수
+    // 入力値変数
     flag: 1,
     ...{ gender, age, height, weight },
     goalWeight: "",
@@ -15,28 +14,28 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
     buttonType: 0,
     dateString: "",
   });
-  const [data, setData] = useState(""); // chatGPT 응답값 변수
+  const [data, setData] = useState(""); // chatGPT応答値変数
 
   useEffect(() => {
     setRes((prevState) => ({ ...prevState, gender: gender, age: age, height: height, weight: weight }));
-  }, [gender, age, height, weight]); // 성별, 스테이터스가 props로 넘어올때마다(props.gender가 변동 있을때 마다)
+  }, [gender, age, height, weight]); // 性別, ステータスpropsに移るたびに(props.genderが変動するたびに)
 
   const onClickSubmitButton = async (e) => {
-    // 입력버튼 누르면
+    // 入力ボタンを押すと
     e.preventDefault();
     setActivated(true);
     const date = new Date();
-    // 날짜와 시간 정보를 가져오기
-    const year = date.getFullYear(); // 연도
-    const month = date.getMonth() + 1; // 월 (0부터 시작하므로 1을 더해줌)
-    const day = date.getDate(); // 일
+    // 日付と時刻の情報を取得
+    const year = date.getFullYear(); // 年
+    const month = date.getMonth() + 1; // 月 (0から始まるので1を加算)
+    const day = date.getDate(); // 日
     const dayOfWeek = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"][date.getDay()];
     const dateString = `${year}.${month}.${day} ${dayOfWeek}`;
     const buttonType = e.target.id === "button1" ? 0 : 1;
     const newRes = { ...res, buttonType, dateString };
     setRes(newRes);
     if (e.target.id === "button1") {
-      // 운동 추천
+      // 運動のおすすめ
       const response = await axios.post("/api/chat", { prompt: newRes });
       setData(response.data.response.replace(/^\n+/, ""));
     } else if (e.target.id === "button2") {
@@ -61,15 +60,15 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
   };
 
   const handleChange = (e) => {
-    // input value값 핸들러
-    const { name, value } = e.target; // 발생한 이벤트의 name값과 value값을 구조할당분해, 변수로 지정
-    setRes((prevState) => ({ ...prevState, [name]: value })); // prevState 매개변수를 사용해 이전 res값을 복사하고, 새로운 값을 업데이트, 기존 값들을 유지하며 업데이트
-    // name에 []대괄호 친 것은 parameter를 사용하기 위함. []빼면 프로퍼티
+    // input value値ハンドラ
+    const { name, value } = e.target; // 発生したイベントのname値とvalue値を分割代入して、変数に指定
+    setRes((prevState) => ({ ...prevState, [name]: value })); // prevStateパラメータを使って以前のres値をコピーし、新しい値を更新、既存の値を維持して更新します。
+    // nameに[]括弧を付けたのはparameterを使うため。[]を抜くとプロパティ
   };
 
   return (
-    <div className='flex flex-col items-center justify-center w-[80%] my-10 lg:my-0 lg:p-20 lg:flex-row'>
-      <div className='flex flex-col items-center justify-center p-10 bg-gray-200 rounded-lg shadow-md lg:mr-20 dark:bg-gray-500 change'>
+    <div className='flex flex-col items-center justify-center w-full lg:w-[80%] my-10 lg:my-0 lg:flex-row bg-white dark:bg-[#1f2023] h-screen dark:border-x-[#2d2f34] border-[#ccc] border-y-0 border-[1px]'>
+      <div className='flex flex-col items-center justify-center p-10 bg-gray-100 rounded-lg shadow-md lg:mx-10 dark:bg-[#383b40] change'>
         <div className='flex justify-center mb-2'>
           <div className='mr-2'>
             <label className='flex items-center'>
@@ -84,7 +83,7 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
             </label>
           </div>
         </div>
-        <div className='flex mb-2'>
+        <div className='flex flex-row mb-2'>
           <div className='mr-2'>
             <label className='flex items-center'>
               <input type='radio' name='training' value='Cardio' onChange={handleChange} />
@@ -99,7 +98,7 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
           </div>
         </div>
         <div className='flex flex-row mb-2'>
-          <label htmlFor='age' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-400 rounded-l-lg '>
+          <label htmlFor='age' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-200 dark:bg-[#2d2f34] rounded-l-lg '>
             나이
           </label>
           <input
@@ -107,12 +106,12 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
             name='age'
             id='age'
             value={res.age}
-            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-400 rounded-r-lg appearance-none dark:bg-gray-700 focus:outline-none focus:bg-white focus:border-blue-500'
+            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-200 dark:border-[#2d2f34] rounded-r-lg appearance-none dark:bg-[#1f2023] focus:outline-none focus:bg-white focus:border-blue-500'
             onChange={handleChange}
           />
         </div>
         <div className='flex flex-row mb-2'>
-          <label htmlFor='height' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-400 rounded-l-lg '>
+          <label htmlFor='height' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-200 dark:bg-[#2d2f34] rounded-l-lg '>
             키
           </label>
           <input
@@ -120,12 +119,12 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
             name='height'
             id='height'
             value={res.height}
-            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-400 rounded-r-lg appearance-none dark:bg-gray-700 focus:outline-none focus:bg-white focus:border-blue-500'
+            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-200 dark:border-[#2d2f34] rounded-r-lg appearance-none dark:bg-[#1f2023] focus:outline-none focus:bg-white focus:border-blue-500'
             onChange={handleChange}
           />
         </div>
         <div className='flex flex-row mb-2'>
-          <label htmlFor='weight' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-400 rounded-l-lg '>
+          <label htmlFor='weight' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-200 dark:bg-[#2d2f34] rounded-l-lg '>
             체중(kg)
           </label>
           <input
@@ -133,18 +132,18 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
             name='weight'
             id='weight'
             value={res.weight}
-            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-400 rounded-r-lg appearance-none dark:bg-gray-700 focus:outline-none focus:bg-white focus:border-blue-500'
+            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-200 dark:border-[#2d2f34] rounded-r-lg appearance-none dark:bg-[#1f2023] focus:outline-none focus:bg-white focus:border-blue-500'
             onChange={handleChange}
           />
         </div>
         <div className='flex flex-row mb-2'>
-          <label htmlFor='goalWeight' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-400 rounded-l-lg '>
+          <label htmlFor='goalWeight' className='flex items-center justify-center w-24 h-12 font-bold bg-gray-200 dark:bg-[#2d2f34] rounded-l-lg '>
             목표 체중(kg)
           </label>
           <input
             type='text'
             name='goalWeight'
-            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-400 rounded-r-lg appearance-none dark:bg-gray-700 focus:outline-none focus:bg-white focus:border-blue-500'
+            className='px-4 py-2 leading-tight bg-white border-2 border-l-0 border-gray-200 dark:border-[#2d2f34] rounded-r-lg appearance-none dark:bg-[#1f2023] focus:outline-none focus:bg-white focus:border-blue-500'
             onChange={handleChange}
           />
         </div>
@@ -176,9 +175,9 @@ const TrainingRecommend = ({ gender, age, height, weight }) => {
           입력
         </button>
       </div>
-      <div className='flex w-[90%] lg:w-full min-h-[100px] p-20 mt-5 bg-white dark:bg-gray-700 border-gray-400 dark:border-gray-400 border-2 whitespace-pre-line rounded-lg overflow-auto change'>
+      <div className='flex w-[90%] lg:w-full min-h-[200px] lg:min-h-[600px] p-20 mt-5 bg-white dark:bg-black mr-5 border-gray-200 dark:border-gray-600 border-2 whitespace-pre-line rounded-lg overflow-auto change'>
         <label className='flex w-full h-full '>{data && data}</label>
-        {/* {data & data} 3항연산자 왼쪽 값이 참이면 오른쪽 값 표시 */}
+        {/* {data & data} 三項演算子 左の値が真なら右の値を表示 */}
       </div>
       <div>
         {data && (
